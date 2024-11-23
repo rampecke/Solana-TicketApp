@@ -156,11 +156,11 @@ class MockModel: Model {
         
         let calendar = Calendar.current
         
-        let startTimeComponents = DateComponents(year: 2024, month: 11, day: 20, hour: 20, minute: 0)
+        let startTimeComponents = DateComponents(year: 2024, month: 11, day: 24, hour: 10, minute: 0)
         guard let startTime = calendar.date(from: startTimeComponents) else {
             fatalError("Failed to create start date")
         }
-        let endTimeComponents = DateComponents(year: 2024, month: 11, day: 20, hour: 22, minute: 0)
+        let endTimeComponents = DateComponents(year: 2024, month: 11, day: 25, hour: 22, minute: 0)
         guard let endTime = calendar.date(from: endTimeComponents) else {
             fatalError("Failed to create start date")
         }
@@ -174,11 +174,11 @@ class MockModel: Model {
     func getExampleTicket() -> Ticket {
         let calendar = Calendar.current
         
-        let startTimeComponents = DateComponents(year: 2024, month: 11, day: 20, hour: 20, minute: 0)
+        let startTimeComponents = DateComponents(year: 2024, month: 11, day: 24, hour: 10, minute: 0)
         guard let startTime = calendar.date(from: startTimeComponents) else {
             fatalError("Failed to create start date")
         }
-        let endTimeComponents = DateComponents(year: 2024, month: 11, day: 20, hour: 22, minute: 0)
+        let endTimeComponents = DateComponents(year: 2024, month: 11, day: 25, hour: 22, minute: 0)
         guard let endTime = calendar.date(from: endTimeComponents) else {
             fatalError("Failed to create start date")
         }

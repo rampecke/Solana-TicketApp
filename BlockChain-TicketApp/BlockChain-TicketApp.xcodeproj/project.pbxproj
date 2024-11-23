@@ -27,6 +27,8 @@
 		A0E871912CF242BD0084AD88 /* TicketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871902CF242BD0084AD88 /* TicketList.swift */; };
 		A0E871942CF24DD00084AD88 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871932CF24DD00084AD88 /* LoginScreen.swift */; };
 		A0E871962CF257CD0084AD88 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871952CF257CD0084AD88 /* Profile.swift */; };
+		A0E871982CF25A5B0084AD88 /* TicketCountdownElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871972CF25A5B0084AD88 /* TicketCountdownElement.swift */; };
+		A0E8719C2CF268550084AD88 /* TicketCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8719B2CF268550084AD88 /* TicketCountdown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		A0E871902CF242BD0084AD88 /* TicketList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketList.swift; sourceTree = "<group>"; };
 		A0E871932CF24DD00084AD88 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		A0E871952CF257CD0084AD88 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		A0E871972CF25A5B0084AD88 /* TicketCountdownElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCountdownElement.swift; sourceTree = "<group>"; };
+		A0E8719B2CF268550084AD88 /* TicketCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCountdown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,8 @@
 				A0E8717B2CF1849F0084AD88 /* SeatingElement.swift */,
 				A0E8717F2CF1DF740084AD88 /* TicketHeader.swift */,
 				A0E871812CF1E1130084AD88 /* TicketHeaderElement.swift */,
+				A0E871972CF25A5B0084AD88 /* TicketCountdownElement.swift */,
+				A0E8719B2CF268550084AD88 /* TicketCountdown.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0E871752CF17AE80084AD88 /* Model.swift in Sources */,
+				A0E871982CF25A5B0084AD88 /* TicketCountdownElement.swift in Sources */,
 				A0E871772CF17C340084AD88 /* Seating.swift in Sources */,
 				A0E8716F2CF176020084AD88 /* TicketView.swift in Sources */,
 				A0E871792CF180D90084AD88 /* MockModel.swift in Sources */,
@@ -261,6 +268,7 @@
 				A0E871612CF173F20084AD88 /* ContentView.swift in Sources */,
 				A0E8715F2CF173F20084AD88 /* BlockChain_TicketAppApp.swift in Sources */,
 				A0E8717E2CF1D94C0084AD88 /* TicketOverview.swift in Sources */,
+				A0E8719C2CF268550084AD88 /* TicketCountdown.swift in Sources */,
 				A0E871882CF211BF0084AD88 /* HomeView.swift in Sources */,
 				A0E871912CF242BD0084AD88 /* TicketList.swift in Sources */,
 				A0E8718D2CF21DDB0084AD88 /* EventSection.swift in Sources */,

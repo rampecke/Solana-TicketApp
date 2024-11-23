@@ -9,7 +9,18 @@ import SwiftUI
 
 struct EventSection: View {
     var sectionName: String
+    var sortOption: SortOptions
+    
     @Environment(Model.self) var model: Model
+    
+    //Handle show more logic
+    @State var showMoreTrue: Bool = false
+    
+    // Function to filter events based on `showMoreTrue`
+    private func filteredEvents() -> [OrganizationEvent] {
+        let sortedEvents = model.returnListSorted(sortOption: sortOption)
+        return showMoreTrue ? sortedEvents : Array(sortedEvents.prefix(2))
+    }
     
     var body: some View {
         VStack {
@@ -18,7 +29,7 @@ struct EventSection: View {
                     .font(.headline)
                 Spacer()
                 Button(action: {
-                    //TODO: Functionality
+                    showMoreTrue.toggle()
                 }, label: {
                     Text("See More")
                         .font(.subheadline)
@@ -26,20 +37,23 @@ struct EventSection: View {
                         .foregroundColor(.blue)
                 })
             }.frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
+            .padding(.horizontal)
             
             LazyVGrid(columns: [
                 GridItem(.fixed(170)),
                 GridItem(.fixed(170)),
             ], spacing: 10) {
-                EventCard(organizationEvent: model.allEvents[0])
-                EventCard(organizationEvent: model.allEvents[1])
-                //TODO: Filter list for what is in this section
+                ForEach(filteredEvents(), id: \.eventId) { event in
+                    EventCard(organizationEvent: event)
+                }
+//                EventCard(organizationEvent: model.allEvents[0])
+//                EventCard(organizationEvent: model.allEvents[1])
+//                //TODO: Filter list for what is in this section
             }.padding(.horizontal)
         }
     }
 }
 
 #Preview {
-    EventSection(sectionName: "Popular Events").environment(MockModel() as Model)
+    EventSection(sectionName: "Popular Events", sortOption: SortOptions.Popular).environment(MockModel() as Model)
 }

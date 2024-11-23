@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 @Observable
-class Ticket {
+class Ticket: Identifiable {
     var id: UUID
     var ticketType: String
     var seating: Seating

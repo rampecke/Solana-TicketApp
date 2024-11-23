@@ -13,4 +13,12 @@ class Model {
     var allEvents: [OrganizationEvent] = []
     
     var profile: Profile = Profile(name: "", profilePictureUrl: "")
+    
+    func returnListSorted(sortOption: SortOptions) -> [OrganizationEvent] {
+        return allEvents //TODO: actually sort by the type
+    }
+}
+
+enum SortOptions: CaseIterable {
+    case Popular, CloseBy, Music, Sports, ArtsTheatre, Conference, Fair, Other
 }
