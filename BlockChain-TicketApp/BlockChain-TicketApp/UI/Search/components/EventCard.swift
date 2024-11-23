@@ -36,6 +36,6 @@ struct EventCard: View {
 }
 
 #Preview {
-    var model = MockModel()
+    let model = MockModel()
     return EventCard(organizationEvent: model.allEvents[0])
 }

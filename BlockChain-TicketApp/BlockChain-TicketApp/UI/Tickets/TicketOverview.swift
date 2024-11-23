@@ -65,13 +65,13 @@ struct TicketOverview: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                 //Text(ticket.eventDescription)
-                Text(ticket.eventDescription.count > 200 && !isExpanded ? "\(String(ticket.eventDescription.prefix(200)))..." : ticket.eventDescription)
+                Text(ticket.organizationEvent.eventDescription.count > 200 && !isExpanded ? "\(String(ticket.organizationEvent.eventDescription.prefix(200)))..." : ticket.organizationEvent.eventDescription)
                     .font(.body)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
                     .padding(.horizontal)
-                if ticket.eventDescription.count > 300 {
+                if ticket.organizationEvent.eventDescription.count > 300 {
                     HStack(alignment: .top){
                         Button(action: {
                             isExpanded.toggle()
@@ -96,12 +96,12 @@ struct TicketOverview: View {
                 }.padding(.horizontal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .onAppear {
-                    fetchAddress(from: ticket.location)
+                    fetchAddress(from: ticket.organizationEvent.location)
                 }
                 
                 //Map
                 Map() { //TODO: Maybe zoom out a bit more
-                    Marker("Location", coordinate: ticket.location)
+                    Marker("Location", coordinate: ticket.organizationEvent.location)
                 }.mapStyle(.standard)
                 .frame(height: 300)
                 .cornerRadius(15)

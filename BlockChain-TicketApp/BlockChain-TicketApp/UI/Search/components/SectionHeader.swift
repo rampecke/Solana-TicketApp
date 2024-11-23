@@ -16,7 +16,7 @@ struct SectionHeader: View {
                 .font(.headline)
             Spacer()
             Button(action: {
-                //TODO: Add a button with see more functionality
+                //TODO: Functionality
             }, label: {
                 Text("See More")
                     .font(.subheadline)
