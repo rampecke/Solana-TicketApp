@@ -44,11 +44,12 @@ struct EventSection: View {
                 GridItem(.fixed(170)),
             ], spacing: 10) {
                 ForEach(filteredEvents(), id: \.eventId) { event in
-                    EventCard(organizationEvent: event)
+                    NavigationLink {
+                        EventOverview(organizationEvent: event)
+                    } label: {
+                        EventCard(organizationEvent: event)
+                    }
                 }
-//                EventCard(organizationEvent: model.allEvents[0])
-//                EventCard(organizationEvent: model.allEvents[1])
-//                //TODO: Filter list for what is in this section
             }.padding(.horizontal)
         }
     }

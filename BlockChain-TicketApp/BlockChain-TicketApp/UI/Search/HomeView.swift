@@ -29,12 +29,14 @@ struct HomeView: View {
     }
     
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading) {
-                EventSection(sectionName: "Popular Events", sortOption: SortOptions.Popular)
-                EventSection(sectionName: "Nearby Event", sortOption: SortOptions.CloseBy)
-                ForEach(EventCategoryType.allCases, id: \.self) { category in
-                    EventSection(sectionName: category.rawValue, sortOption: selectSortOption(eventType: category))
+        NavigationStack {
+            ScrollView{
+                VStack(alignment: .leading) {
+                    EventSection(sectionName: "Popular Events", sortOption: SortOptions.Popular)
+                    EventSection(sectionName: "Nearby Event", sortOption: SortOptions.CloseBy)
+                    ForEach(EventCategoryType.allCases, id: \.self) { category in
+                        EventSection(sectionName: category.rawValue, sortOption: selectSortOption(eventType: category))
+                    }
                 }
             }
         }
