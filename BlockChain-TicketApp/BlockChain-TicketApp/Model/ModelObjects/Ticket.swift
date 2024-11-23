@@ -7,7 +7,6 @@
 
 import Foundation
 import MapKit
-import CoreLocation
 
 @Observable
 class Ticket {
@@ -22,8 +21,6 @@ class Ticket {
     var eventDescription: String
     var orderId: String
     
-    private let geocoder = CLGeocoder()
-    
     init(id: UUID, ticketName: String, startTime: Date, endTime: Date, ticketType: String, seating: Seating, location: CLLocationCoordinate2D, nameLocation: String, eventDescription: String, orderId: String) {
         self.id = id
         self.ticketName = ticketName
@@ -35,25 +32,5 @@ class Ticket {
         self.nameLocation = nameLocation
         self.eventDescription = eventDescription
         self.orderId = orderId
-    }
-    
-    //TODO: FIX
-    func resolvePlaceName() -> String {
-        let location = CLLocation(latitude: self.location.latitude, longitude: self.location.longitude)
-        var placeName: String = ""
-        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
-            guard let self = self else { return }
-            if let placemark = placemarks?.first {
-                placeName = [
-                    placemark.name,
-                    placemark.locality,
-                    placemark.administrativeArea,
-                    placemark.country
-                ].compactMap { $0 }.joined(separator: ", ")
-            } else {
-                placeName = "Unknown Place"
-            }
-        }
-        return placeName
     }
 }

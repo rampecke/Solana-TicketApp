@@ -61,10 +61,22 @@ struct TicketOverview: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
+                HStack {
+                    Image(systemName: "pin.fill")
+                        .font(.headline) //
+                        .foregroundColor(.blue)
+
+                    Text(ticket.nameLocation) //TODO: Fetch Street from MapKit
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                }.padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
                 //Map
-                Map{
+                Map() { //TODO: Maybe zoom out a bit more
                     Marker("Location", coordinate: ticket.location)
-                }.frame(height: 300)
+                }.mapStyle(.standard)
+                .frame(height: 300)
                 .cornerRadius(15)
                 .padding(.horizontal)
             }
