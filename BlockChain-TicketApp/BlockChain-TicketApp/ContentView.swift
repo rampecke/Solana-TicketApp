@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SolanaSwift
 
 struct ContentView: View {
     @Environment(Model.self) var model: Model
@@ -23,6 +24,7 @@ struct ContentView: View {
         }
     }
 }
+
 
 #Preview {
     ContentView().environment(MockModel() as Model)
