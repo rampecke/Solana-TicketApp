@@ -34,7 +34,7 @@ class SolanaService2 {
         SolanaSwift.Logger.setLoggers([customLogger])
         
         let endpoint = APIEndPoint(
-            address: "https://devnet.helius-rpc.com/?api-key=f3a21333-230f-44d2-8486-d1b00961dedd",
+            address: "https://api.devnet.solana.com",
             network: .devnet
         )
         
@@ -42,7 +42,7 @@ class SolanaService2 {
         self.blockchainClient = BlockchainClient(apiClient: self.apiClient)
     }
     
-    func initWeb3Auth() async throws {
+    private func initWeb3Auth() async throws {
         if (self.web3Auth == nil) {
             self.web3Auth = try await Web3Auth(
                 W3AInitParams(
@@ -54,6 +54,7 @@ class SolanaService2 {
         }
     }
     
+    /// Authenticate using Google signin
     func auth() async throws -> KeyPair {
         try await initWeb3Auth();
         
@@ -76,6 +77,7 @@ class SolanaService2 {
         return try await self.loadFromHex(hex: key)
     }
     
+    /// Create a new keypair
     func createAccount() async throws -> (KeyPair, String, String) {
         let keypair = try await KeyPair(network: self.network)
         let phrase = keypair.phrase.joined(separator: " ")
@@ -84,7 +86,7 @@ class SolanaService2 {
         return (keypair, phrase, address)
     }
     
-    
+    /// Restore a keypair from the seed phrase
     func loadAccountFromPhrase(phrase: String) async throws -> KeyPair {
         let words = phrase.components(separatedBy: " ")
         let keypair = try await KeyPair(phrase: words, network: self.network)
@@ -92,35 +94,35 @@ class SolanaService2 {
         return keypair
     }
     
+    /// Create a keypair from hex
     func loadFromHex(hex: String) async throws -> KeyPair {
         let keypair = try KeyPair(secretKey: Data(hex: hex))
         
         return keypair
     }
     
+    /// Get the current SOL balance of the account
     func getBalance(account: String) async throws -> Int {
         let balance = try await apiClient.getBalance(account: account, commitment: "recent")
         
         return Int(balance)
     }
     
-    private func perpareTransaction(from: KeyPair) async throws -> PreparedTransaction {
-        let transaction = try await blockchainClient.prepareSendingNativeSOL(
-            from: from,
-            to: "2idRaWFin4Zn5WY9or6XBhcoF6cyfDWSbJQ26jAtptxD",
-            amount: 0.01.toLamport(decimals: 9)
-        )
+    /// Get the metadata of a token
+    func getToken(mintId: String) async throws {
+        let res = try await apiClient.getAsset(address: mintId)
         
-        return transaction
+        print(res)
     }
     
+    /// Send SOL to another address
     func sendTokens(from: KeyPair, to: String, amount: Int) async throws -> TransactionID {
         // To get balance of the current account
         let balance = try await self.getBalance(account: to)
         
         print("Balance: \(balance)")
         
-        var preparedTransaction = try await self.blockchainClient.prepareSendingNativeSOL(
+        let preparedTransaction = try await self.blockchainClient.prepareSendingNativeSOL(
             from: from,
             to: to,
             amount: 1
@@ -135,9 +137,34 @@ class SolanaService2 {
         return transactionId
     }
     
+    /// List all tokens for a specific address
+    func listTokens(account: String) async throws -> [AssetInfo] {
+        // Fetch token accounts for the given address
+        let tokenAccounts = try await apiClient.getTokenAccountsByOwner(
+            pubkey: account,
+            params: .init(mint: nil, programId: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"),
+            configs: .init(commitment: "processed", encoding: "base64")
+        )
+        
+        var assets: [AssetInfo] = []
+        
+        // Iterate over each token account and fetch its metadata
+        for tokenAccount in tokenAccounts {
+            let mintId = tokenAccount.account.data.mint
+            
+            let assetInfo = try await apiClient.getAsset(address: mintId.base58EncodedString)
+            
+            print("It works")
+            //assets.append(assetInfo)
+        }
+        
+        
+        return assets
+    }
+    
     // Initialize Calculator
     func initCalculator(owner: KeyPair, calculatorPublicKey: PublicKey) async throws -> String {
-        let data: [BytesEncodable] = [UInt8(0)].compactMap { $0 }
+        let data: [BytesEncodable] = [UInt64(0)]
         
         let instruction = TransactionInstruction(
             keys: [

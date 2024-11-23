@@ -1,5 +1,5 @@
 {
-  "originHash" : "d58350f7863e4869c01f305e7b557ad1d59fc39f1e7708c7b0807c1fcb80c475",
+  "originHash" : "d1d0c76b87295adcdac1409841152a0a2ce55aedbf089500aceb7ea3c6306e6e",
   "pins" : [
     {
       "identity" : "bigint",
@@ -44,15 +44,6 @@
       "state" : {
         "revision" : "20cc7bff065d7fe53164d17e7714a3f17d4cea2a",
         "version" : "4.0.2"
-      }
-    },
-    {
-      "identity" : "solana-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Simolation/solana-swift",
-      "state" : {
-        "branch" : "main",
-        "revision" : "925646689170467e76e75a31068854ea3577d32b"
       }
     },
     {

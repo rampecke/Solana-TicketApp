@@ -36,6 +36,7 @@
 		F4E862FB2CF18A6B006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862FA2CF18A6B006382DF /* Solana */; };
 		F4E862FE2CF18AC2006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862FD2CF18AC2006382DF /* Solana */; };
 		F4ADFCD72CF2162A002094E9 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4ADFCD62CF2162A002094E9 /* SolanaSwift */; };
+		F4ADFCDD2CF21CFE002094E9 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4ADFCDC2CF21CFE002094E9 /* SolanaSwift */; };
 		F4D8DA172CF1F6F50032C526 /* Web3Auth in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA162CF1F6F50032C526 /* Web3Auth */; };
 		F4D8DA192CF1F70A0032C526 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA182CF1F70A0032C526 /* SolanaSwift */; };
 		F4D8DA1C2CF210F70032C526 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA1B2CF210F70032C526 /* SolanaSwift */; };
@@ -83,6 +84,7 @@
 				F4ADFCD72CF2162A002094E9 /* SolanaSwift in Frameworks */,
 				F4D8DA192CF1F70A0032C526 /* SolanaSwift in Frameworks */,
 				F4D8DA172CF1F6F50032C526 /* Web3Auth in Frameworks */,
+				F4ADFCDD2CF21CFE002094E9 /* SolanaSwift in Frameworks */,
 				F4E863112CF1F698006382DF /* SolanaSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,7 +257,7 @@
 			mainGroup = A0E871522CF173F20084AD88;
 			packageReferences = (
 				F4E8630B2CF1F62F006382DF /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */,
-				F4ADFCD52CF2162A002094E9 /* XCRemoteSwiftPackageReference "solana-swift" */,
+				F4ADFCDB2CF21CFE002094E9 /* XCLocalSwiftPackageReference "../../solana-swift" */,
 			);
 			productRefGroup = A0E8715C2CF173F20084AD88 /* Products */;
 			projectDirPath = "";
@@ -507,6 +509,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		F4ADFCDB2CF21CFE002094E9 /* XCLocalSwiftPackageReference "../../solana-swift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../solana-swift";
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		F4ADFCD52CF2162A002094E9 /* XCRemoteSwiftPackageReference "solana-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -538,6 +547,10 @@
 		F4ADFCD62CF2162A002094E9 /* SolanaSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4ADFCD52CF2162A002094E9 /* XCRemoteSwiftPackageReference "solana-swift" */;
+			productName = SolanaSwift;
+		};
+		F4ADFCDC2CF21CFE002094E9 /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = SolanaSwift;
 		};
 		F4D8DA162CF1F6F50032C526 /* Web3Auth */ = {
