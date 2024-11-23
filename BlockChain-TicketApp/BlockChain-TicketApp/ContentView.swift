@@ -16,7 +16,7 @@ struct ContentView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
             
-            TicketOverview(ticket: MockModel().getExampleTicket())
+            TicketList()
                 .tabItem {
                     Label("Tickets", systemImage: "ticket")
                 }

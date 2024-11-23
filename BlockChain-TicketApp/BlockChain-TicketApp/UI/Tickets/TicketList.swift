@@ -11,18 +11,24 @@ struct TicketList: View {
     @Environment(Model.self) var model: Model
     
     var body: some View {
-        ScrollView{
-            VStack(spacing: 10){
-                ForEach(model.myTickets) { ticket in
-                    TicketCountdownElement(ticket: ticket).padding(.horizontal)
+        NavigationStack {
+            ScrollView{
+                VStack(spacing: 10){
+                    ForEach(model.myTickets) { ticket in
+                        NavigationLink {
+                            TicketOverview(ticket: ticket)
+                        } label: {
+                            TicketCountdownElement(ticket: ticket).padding(.horizontal)
+                        }
+                    }
                 }
-            }
-        }.overlay {
-            if model.myTickets.isEmpty {
-                ContentUnavailableView {
-                    Label("No Tickets", systemImage: "ticket")
-                } description: {
-                    Text("Go to the Searchpag and get your tickets.")
+            }.overlay {
+                if model.myTickets.isEmpty {
+                    ContentUnavailableView {
+                        Label("No Tickets", systemImage: "ticket")
+                    } description: {
+                        Text("Go to the Searchpag and get your tickets.")
+                    }
                 }
             }
         }

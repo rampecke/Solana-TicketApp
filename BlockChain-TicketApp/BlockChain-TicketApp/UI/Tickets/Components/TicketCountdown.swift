@@ -16,6 +16,7 @@ struct TicketCountdown: View {
             Text(ticket.organizationEvent.eventName)
                 .font(.headline)
                 .fontWeight(.bold)
+                .foregroundColor(.primary)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack{

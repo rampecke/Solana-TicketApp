@@ -17,6 +17,9 @@ struct TicketOverview: View {
     // Address Variables
     @State private var address: String = "Loading address..."
     
+    //Open and close sheet for Ticket
+    @State var ticketOpen: Bool = false
+    
     init(ticket: Ticket) {
         self.ticket = ticket
     }
@@ -58,6 +61,26 @@ struct TicketOverview: View {
                         .padding(.horizontal, 20)
                 }.padding(.horizontal)
                 
+                Button(action: {
+                    ticketOpen.toggle()
+                }) {
+                    HStack {
+                        Image(systemName: "qrcode")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                        
+                        Text("Show QR Code")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                    }.foregroundColor(Color("onAccentColor"))
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color("accentColor"))
+                    .cornerRadius(15)
+                    .padding(.horizontal)
+                }
+                
                 // Title below the ZStack
                 Text("About this event")
                     .font(.title3)
@@ -79,7 +102,7 @@ struct TicketOverview: View {
                             Text(isExpanded ? "Show Less" : "Show More")
                                 .font(.subheadline)
                                 .fontWeight(.bold)
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color("accentColor"))
                         }
                     }.padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -88,7 +111,7 @@ struct TicketOverview: View {
                 HStack {
                     Image(systemName: "pin.fill")
                         .font(.subheadline) //
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color("accentColor"))
 
                     Text(address)
                         .font(.subheadline)
@@ -107,7 +130,11 @@ struct TicketOverview: View {
                 .cornerRadius(15)
                 .padding(.horizontal)
             }
-        }
+        }.sheet(isPresented: $ticketOpen, content: {
+            TicketView(ticket: ticket)
+                .presentationDetents([.height(450)])
+                .presentationDragIndicator(.visible)
+        })
     }
 }
 
