@@ -12,5 +12,7 @@ class Model {
     var myTickets: [Ticket] = []
     var allEvents: [OrganizationEvent] = []
     
-    var profile: Profile = Profile(name: "", profilePictureUrl: "")
+    var profile: Profile = Profile()
+    
+    var solana: SolanaService = SolanaService()
 }

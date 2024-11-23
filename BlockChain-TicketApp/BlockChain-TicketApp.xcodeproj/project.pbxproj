@@ -27,14 +27,6 @@
 		A0E871912CF242BD0084AD88 /* TicketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871902CF242BD0084AD88 /* TicketList.swift */; };
 		A0E871942CF24DD00084AD88 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871932CF24DD00084AD88 /* LoginScreen.swift */; };
 		A0E871962CF257CD0084AD88 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871952CF257CD0084AD88 /* Profile.swift */; };
-		F4E862EB2CF183FB006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862EA2CF183FB006382DF /* Solana */; };
-		F4E862ED2CF18602006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862EC2CF18602006382DF /* Solana */; };
-		F4E862EF2CF188B5006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862EE2CF188B5006382DF /* Solana */; };
-		F4E862F22CF18978006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862F12CF18978006382DF /* Solana */; };
-		F4E862F52CF189F9006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862F42CF189F9006382DF /* Solana */; };
-		F4E862F82CF18A44006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862F72CF18A44006382DF /* Solana */; };
-		F4E862FB2CF18A6B006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862FA2CF18A6B006382DF /* Solana */; };
-		F4E862FE2CF18AC2006382DF /* Solana in Frameworks */ = {isa = PBXBuildFile; productRef = F4E862FD2CF18AC2006382DF /* Solana */; };
 		F4ADFCD72CF2162A002094E9 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4ADFCD62CF2162A002094E9 /* SolanaSwift */; };
 		F4ADFCDD2CF21CFE002094E9 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4ADFCDC2CF21CFE002094E9 /* SolanaSwift */; };
 		F4ADFCE52CF2562C002094E9 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4ADFCE42CF2562C002094E9 /* SolanaSwift */; };
@@ -117,7 +109,6 @@
 			children = (
 				A0E871702CF176AD0084AD88 /* Model */,
 				A0E8716C2CF175270084AD88 /* UI */,
-				F4E862FF2CF1D148006382DF /* Solana */,
 				A0E8715E2CF173F20084AD88 /* BlockChain_TicketAppApp.swift */,
 				A0E871602CF173F20084AD88 /* ContentView.swift */,
 				A0E871622CF173F30084AD88 /* Assets.xcassets */,
@@ -158,6 +149,7 @@
 		A0E871702CF176AD0084AD88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F4E862FF2CF1D148006382DF /* Solana */,
 				A0E871712CF176BF0084AD88 /* ModelObjects */,
 				A0E871742CF17AE80084AD88 /* Model.swift */,
 				A0E871782CF180D90084AD88 /* MockModel.swift */,

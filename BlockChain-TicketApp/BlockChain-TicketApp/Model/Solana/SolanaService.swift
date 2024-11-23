@@ -27,8 +27,8 @@ class SolanaService {
     private let programId = PublicKey("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS")
     
     init() {
-        let customLogger: SolanaSwiftLogger = MyCustomLogger()
-        SolanaSwift.Logger.setLoggers([customLogger])
+        // let customLogger: SolanaSwiftLogger = MyCustomLogger()
+        // SolanaSwift.Logger.setLoggers([customLogger])
         
         let endpoint = APIEndPoint(
             address: "https://api.devnet.solana.com",
@@ -52,7 +52,7 @@ class SolanaService {
     }
     
     /// Authenticate using Google signin
-    func auth() async throws -> KeyPair {
+    func auth() async throws -> AuthUser {
         try await initWeb3Auth();
         
         try await self.web3Auth!.login(W3ALoginParams(loginProvider: .GOOGLE))
@@ -66,12 +66,15 @@ class SolanaService {
         
         let userInfo = try self.web3Auth!.getUserInfo()
         
-        print("UserInfo: \(userInfo)")
-        
         let key = self.web3Auth!.getEd25519PrivKey()
-        print("Key: \(key)")
+        let keypair = try await self.loadFromHex(hex: key)
         
-        return try await self.loadFromHex(hex: key)
+        return AuthUser(
+            name: userInfo.name,
+            email: userInfo.email,
+            profileImage: userInfo.profileImage,
+            key: keypair
+        )
     }
     
     /// Create a new keypair

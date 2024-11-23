@@ -34,7 +34,6 @@ struct EventSection: View {
             ], spacing: 10) {
                 EventCard(organizationEvent: model.allEvents[0])
                 EventCard(organizationEvent: model.allEvents[1])
-                //TODO: Filter list for what is in this section
             }.padding(.horizontal)
         }
     }

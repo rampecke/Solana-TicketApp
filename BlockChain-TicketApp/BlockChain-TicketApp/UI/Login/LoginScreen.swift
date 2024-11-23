@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LoginScreen: View {
+    
+    @Environment(Model.self) var model: Model
+    
     var body: some View {
         VStack() {
             Image("Logo")
@@ -15,6 +18,7 @@ struct LoginScreen: View {
                 .scaledToFit()
                 .padding()
                 .frame(maxWidth: 300, alignment: .center)
+            
             Text("Secure your tickets with confidence.")
                 .font(.subheadline)
                 .fontWeight(.bold)
@@ -24,7 +28,21 @@ struct LoginScreen: View {
             
             // Google login button
             Button(action: {
-                // Handle Google login action
+                Task {
+                    
+                    do {
+                        let auth = try await model.solana.auth()
+                        
+                        model.profile.name = auth.name
+                        model.profile.profilePictureUrl = auth.profileImage
+                        model.profile.keypair = auth.key
+                        
+                        model.profile.signedIn = true
+                    } catch {
+                        print("Failed to create account: \(error.localizedDescription)")
+                        print(error)
+                    }
+                }
             }) {
                 HStack {
                     Image("google") // Use actual Google logo image or SF symbol if available
