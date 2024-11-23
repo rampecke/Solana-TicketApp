@@ -60,7 +60,7 @@ struct TicketOverview: View {
             }.padding(.top, 10)
         }.sheet(isPresented: $ticketOpen, content: {
             TicketView(ticket: ticket)
-                .presentationDetents([.height(450)])
+                .presentationDetents([.height(500)])
                 .presentationDragIndicator(.visible)
         })
     }

@@ -29,88 +29,91 @@ struct TicketView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            // Event Title
-            Text(ticket.organizationEvent.eventName)
-                .font(.headline)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity)
-            
-            // Place and Date
-            VStack(alignment: .center, spacing: 4) {
-                Text("\(formatDateRange(date: ticket.organizationEvent.startTime))")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                Text(ticket.organizationEvent.nameLocation)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-            .frame(maxWidth: .infinity) // Center horizontally
-            
-            // Dotted Line
-            Divider()
-                .overlay(Color.gray)
-                .padding(.horizontal)
-                .frame(height: 1)
-            
-            // QR Code Placeholder
-            Rectangle()
-                .fill(Color.gray.opacity(0.2))
-                .frame(width: 170, height: 170)
-                .cornerRadius(8)
-                .overlay(
-                    Image(uiImage: generateQRCode(from: "\(ticket.id)\n\(ticket.organizationEvent.endTime)"))
-                        .interpolation(.none)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 150)
-                        .padding()
-                )
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 16)
-            
-            // Dotted Line
-            Divider()
-                .overlay(Color.gray)
-                .padding(.horizontal)
-                .frame(height: 1)
-                
-            
-            // Ticket Type
-            Text(ticket.ticketType)
-                .font(.headline)
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity, alignment: .center)
-            
-            // Seating Information
-            if !ticket.seating.allEmpty() {
-                HStack(spacing: 16) {
-                    if let block = ticket.seating.block {
-                        SeatingElement(heading: "Block", seatingValue: block)
-                    }
-                    if let row = ticket.seating.row {
-                        SeatingElement(heading: "Row", seatingValue: row)
-                    }
-                    if let seat = ticket.seating.seat {
-                        SeatingElement(heading: "Seat", seatingValue: seat)
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal)
-            }
-            
-            // Extra Seating Info
-            if let extraInfo = ticket.seating.extraSeatingInfo {
-                Text(extraInfo)
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
+        VStack{
+            AnimatedBanner().padding(.bottom, 5)
+            VStack(alignment: .leading, spacing: 10) {
+                // Event Title
+                Text(ticket.organizationEvent.eventName)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
+                
+                // Place and Date
+                VStack(alignment: .center, spacing: 4) {
+                    Text("\(formatDateRange(date: ticket.organizationEvent.startTime))")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Text(ticket.organizationEvent.nameLocation)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                .frame(maxWidth: .infinity) // Center horizontally
+                
+                // Dotted Line
+                Divider()
+                    .overlay(Color.gray)
+                    .padding(.horizontal)
+                    .frame(height: 1)
+                
+                // QR Code Placeholder
+                Rectangle()
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 170, height: 170)
+                    .cornerRadius(8)
+                    .overlay(
+                        Image(uiImage: generateQRCode(from: "\(ticket.id)\n\(ticket.organizationEvent.endTime)"))
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .padding()
+                    )
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                
+                // Dotted Line
+                Divider()
+                    .overlay(Color.gray)
+                    .padding(.horizontal)
+                    .frame(height: 1)
+                
+                
+                // Ticket Type
+                Text(ticket.ticketType)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                // Seating Information
+                if !ticket.seating.allEmpty() {
+                    HStack(spacing: 16) {
+                        if let block = ticket.seating.block {
+                            SeatingElement(heading: "Block", seatingValue: block)
+                        }
+                        if let row = ticket.seating.row {
+                            SeatingElement(heading: "Row", seatingValue: row)
+                        }
+                        if let seat = ticket.seating.seat {
+                            SeatingElement(heading: "Seat", seatingValue: seat)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                }
+                
+                // Extra Seating Info
+                if let extraInfo = ticket.seating.extraSeatingInfo {
+                    Text(extraInfo)
+                        .font(.subheadline)
+                        .padding()
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(8)
+                        .frame(maxWidth: .infinity)
+                }
             }
+            .padding()
         }
-        .padding()
     }
     
     // Helper function to format the date range
