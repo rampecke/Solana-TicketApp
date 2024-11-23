@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "Hackatum-Eventure.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Hackatum-Eventure-DarkMode.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

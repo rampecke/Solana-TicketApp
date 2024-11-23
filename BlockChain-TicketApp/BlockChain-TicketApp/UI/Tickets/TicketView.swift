@@ -31,7 +31,7 @@ struct TicketView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             // Event Title
-            Text(ticket.ticketName)
+            Text(ticket.organizationEvent.eventName)
                 .font(.headline)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
@@ -39,10 +39,10 @@ struct TicketView: View {
             
             // Place and Date
             VStack(alignment: .center, spacing: 4) {
-                Text("\(formatDateRange(date: ticket.startTime))")
+                Text("\(formatDateRange(date: ticket.organizationEvent.startTime))")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                Text(ticket.nameLocation)
+                Text(ticket.organizationEvent.nameLocation)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -60,7 +60,7 @@ struct TicketView: View {
                 .frame(width: 170, height: 170)
                 .cornerRadius(8)
                 .overlay(
-                    Image(uiImage: generateQRCode(from: "\(ticket.id)\n\(ticket.endTime)"))
+                    Image(uiImage: generateQRCode(from: "\(ticket.id)\n\(ticket.organizationEvent.endTime)"))
                         .interpolation(.none)
                         .resizable()
                         .scaledToFit()

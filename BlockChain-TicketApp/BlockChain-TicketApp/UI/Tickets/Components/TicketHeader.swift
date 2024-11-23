@@ -10,34 +10,16 @@ import SwiftUI
 struct TicketHeader: View {
     @Bindable var ticket: Ticket
     
-    // Helper function to format the day string
-    private func formatDayString(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        formatter.locale = Locale(identifier: "en_US")
-        return formatter.string(from: date)
-    }
-    
-    // Helper function to format the time
-    private func formatTime(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mma"
-        formatter.amSymbol = " AM"
-        formatter.pmSymbol = " PM"
-        return formatter.string(from: date)
-    }
-    
     var body: some View {
         VStack(alignment: .leading) {
-            Text(ticket.ticketName)
+            Text(ticket.organizationEvent.eventName)
                 .font(.headline)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack{
-                TicketHeaderElement(sfSymbolName: "calendar", elementText: formatDayString(date: ticket.startTime))
-                TicketHeaderElement(sfSymbolName: "clock", elementText: formatTime(date: ticket.startTime))
+                TicketHeaderElement(sfSymbolName: "calendar", elementText: ticket.organizationEvent.formatDayString(date: ticket.organizationEvent.startTime))
+                TicketHeaderElement(sfSymbolName: "clock", elementText: ticket.organizationEvent.formatTime(date: ticket.organizationEvent.startTime))
             }.frame(maxWidth: .infinity, alignment: .leading)
         }.padding(10)
         .background(

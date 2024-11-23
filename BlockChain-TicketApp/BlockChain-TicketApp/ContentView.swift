@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(Model.self) var model: Model
     var body: some View {
         TabView {
-            TicketOverview(ticket: MockModel().getExampleTicket()) //Exchange for a list of tickets
+            HomeView()
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+            
+            TicketOverview(ticket: MockModel().getExampleTicket())
                 .tabItem {
                     Label("Tickets", systemImage: "ticket")
                 }
@@ -19,5 +25,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView().environment(MockModel() as Model)
 }
