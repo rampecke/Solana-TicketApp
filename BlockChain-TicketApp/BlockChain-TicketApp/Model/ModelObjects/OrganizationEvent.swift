@@ -19,8 +19,10 @@ class OrganizationEvent {
     var eventDescription: String
     var eventCategory: EventCategoryType
     var eventName: String
+    var organizerName: String
+    var imageUrl: String
     
-    init(eventId: UUID, popularityScore: Double, startTime: Date, endTime: Date, location: CLLocationCoordinate2D, nameLocation: String, eventDescription: String, eventCategory: EventCategoryType, eventName: String) {
+    init(eventId: UUID, popularityScore: Double, startTime: Date, endTime: Date, location: CLLocationCoordinate2D, nameLocation: String, eventDescription: String, eventCategory: EventCategoryType, eventName: String, organizerName: String, imageUrl: String) {
         self.eventId = eventId
         self.popularityScore = popularityScore
         self.startTime = startTime
@@ -30,6 +32,8 @@ class OrganizationEvent {
         self.eventDescription = eventDescription
         self.eventCategory = eventCategory
         self.eventName = eventName
+        self.organizerName = organizerName
+        self.imageUrl = imageUrl
     }
     
     // Helper function to format the day string
@@ -51,6 +55,11 @@ class OrganizationEvent {
     }
 }
 
-enum EventCategoryType{
-    case Music, Sports, ArtsTheatre, Conference, Fair
+enum EventCategoryType: String, CaseIterable {
+    case Music = "Music"
+    case Sports = "Sport"
+    case ArtsTheatre = "Art & Theatre"
+    case Conference = "Conference"
+    case Fair = "Fair"
+    case Other = "Other"
 }

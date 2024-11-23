@@ -11,8 +11,8 @@ struct EventCard: View {
     @Bindable var organizationEvent: OrganizationEvent
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Image("ExamplePicture") // TODO: Replace with your image name
+        VStack(alignment: .leading, spacing: 5) {
+            Image("ExamplePicture") // TODO: Replace with my image name
                 .resizable()
                 .scaledToFill()
                 .frame(maxWidth: 150, maxHeight: 200)
@@ -23,15 +23,10 @@ struct EventCard: View {
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            VStack(alignment: .leading){
                 TicketHeaderElement(sfSymbolName: "calendar", elementText: organizationEvent.formatDayString(date: organizationEvent.startTime))
                 TicketHeaderElement(sfSymbolName: "clock", elementText: organizationEvent.formatTime(date: organizationEvent.startTime))
-            }.frame(maxWidth: .infinity, alignment: .leading)
-        }.padding(10)
-        .background(
-            RoundedRectangle(cornerRadius: 15)
-                .fill(.background)
-        ).frame(maxWidth: 150, alignment: .leading)
+        }.frame(maxWidth: 150, alignment: .leading)
+        .padding(10)
     }
 }
 

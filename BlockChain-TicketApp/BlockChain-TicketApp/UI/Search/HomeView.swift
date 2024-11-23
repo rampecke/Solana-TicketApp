@@ -14,12 +14,16 @@ struct HomeView: View {
     var body: some View {
         ScrollView{
             VStack(alignment: .leading) {
-                SectionHeader(sectionName: "Popular Events")
+                EventSection(sectionName: "Popular Events")
+                EventSection(sectionName: "Nearby Event")
+                ForEach(EventCategoryType.allCases, id: \.self) { category in
+                    EventSection(sectionName: category.rawValue)
+                }
             }
         }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView().environment(MockModel() as Model)
 }

@@ -46,7 +46,7 @@ struct TicketOverview: View {
         ScrollView {
             VStack(spacing:10) {
                 ZStack(alignment: .bottom) {
-                    Image("ExamplePicture") // TODO: Replace with your image name
+                    Image("ExamplePicture") // TODO: Replace with my image name
                         .resizable()
                         .scaledToFill()
                         .frame(maxWidth: .infinity, maxHeight: 250, alignment: .topLeading)
@@ -90,7 +90,7 @@ struct TicketOverview: View {
                         .font(.subheadline) //
                         .foregroundColor(.blue)
 
-                    Text(address) //TODO: Fetch Street from MapKit
+                    Text(address)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }.padding(.horizontal)
@@ -113,5 +113,5 @@ struct TicketOverview: View {
 
 #Preview {
     let model = MockModel()
-    return TicketOverview(ticket: model.getExampleTicket())
+    return TicketOverview(ticket: model.getExampleTicket()).environment(model as Model)
 }

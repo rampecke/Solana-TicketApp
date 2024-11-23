@@ -22,8 +22,11 @@
 		A0E871822CF1E1130084AD88 /* TicketHeaderElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871812CF1E1130084AD88 /* TicketHeaderElement.swift */; };
 		A0E871882CF211BF0084AD88 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871872CF211BF0084AD88 /* HomeView.swift */; };
 		A0E8718A2CF21B260084AD88 /* OrganizationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871892CF21B260084AD88 /* OrganizationEvent.swift */; };
-		A0E8718D2CF21DDB0084AD88 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8718C2CF21DDB0084AD88 /* SectionHeader.swift */; };
+		A0E8718D2CF21DDB0084AD88 /* EventSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8718C2CF21DDB0084AD88 /* EventSection.swift */; };
 		A0E8718F2CF22D600084AD88 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8718E2CF22D600084AD88 /* EventCard.swift */; };
+		A0E871912CF242BD0084AD88 /* TicketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871902CF242BD0084AD88 /* TicketList.swift */; };
+		A0E871942CF24DD00084AD88 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871932CF24DD00084AD88 /* LoginScreen.swift */; };
+		A0E871962CF257CD0084AD88 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871952CF257CD0084AD88 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,8 +46,11 @@
 		A0E871812CF1E1130084AD88 /* TicketHeaderElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketHeaderElement.swift; sourceTree = "<group>"; };
 		A0E871872CF211BF0084AD88 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A0E871892CF21B260084AD88 /* OrganizationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationEvent.swift; sourceTree = "<group>"; };
-		A0E8718C2CF21DDB0084AD88 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		A0E8718C2CF21DDB0084AD88 /* EventSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSection.swift; sourceTree = "<group>"; };
 		A0E8718E2CF22D600084AD88 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
+		A0E871902CF242BD0084AD88 /* TicketList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketList.swift; sourceTree = "<group>"; };
+		A0E871932CF24DD00084AD88 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		A0E871952CF257CD0084AD88 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,7 @@
 		A0E8716C2CF175270084AD88 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A0E871922CF24DC00084AD88 /* Login */,
 				A0E871862CF211140084AD88 /* Search */,
 				A0E8716D2CF175350084AD88 /* Tickets */,
 			);
@@ -110,6 +117,7 @@
 				A0E8717A2CF1847D0084AD88 /* Components */,
 				A0E8716E2CF176020084AD88 /* TicketView.swift */,
 				A0E8717D2CF1D94C0084AD88 /* TicketOverview.swift */,
+				A0E871902CF242BD0084AD88 /* TicketList.swift */,
 			);
 			path = Tickets;
 			sourceTree = "<group>";
@@ -130,6 +138,7 @@
 				A0E871722CF1771E0084AD88 /* Ticket.swift */,
 				A0E871762CF17C340084AD88 /* Seating.swift */,
 				A0E871892CF21B260084AD88 /* OrganizationEvent.swift */,
+				A0E871952CF257CD0084AD88 /* Profile.swift */,
 			);
 			path = ModelObjects;
 			sourceTree = "<group>";
@@ -156,10 +165,18 @@
 		A0E8718B2CF21DBE0084AD88 /* components */ = {
 			isa = PBXGroup;
 			children = (
-				A0E8718C2CF21DDB0084AD88 /* SectionHeader.swift */,
+				A0E8718C2CF21DDB0084AD88 /* EventSection.swift */,
 				A0E8718E2CF22D600084AD88 /* EventCard.swift */,
 			);
 			path = components;
+			sourceTree = "<group>";
+		};
+		A0E871922CF24DC00084AD88 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A0E871932CF24DD00084AD88 /* LoginScreen.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,12 +255,15 @@
 				A0E871792CF180D90084AD88 /* MockModel.swift in Sources */,
 				A0E8718F2CF22D600084AD88 /* EventCard.swift in Sources */,
 				A0E871802CF1DF740084AD88 /* TicketHeader.swift in Sources */,
+				A0E871942CF24DD00084AD88 /* LoginScreen.swift in Sources */,
+				A0E871962CF257CD0084AD88 /* Profile.swift in Sources */,
 				A0E8717C2CF1849F0084AD88 /* SeatingElement.swift in Sources */,
 				A0E871612CF173F20084AD88 /* ContentView.swift in Sources */,
 				A0E8715F2CF173F20084AD88 /* BlockChain_TicketAppApp.swift in Sources */,
 				A0E8717E2CF1D94C0084AD88 /* TicketOverview.swift in Sources */,
 				A0E871882CF211BF0084AD88 /* HomeView.swift in Sources */,
-				A0E8718D2CF21DDB0084AD88 /* SectionHeader.swift in Sources */,
+				A0E871912CF242BD0084AD88 /* TicketList.swift in Sources */,
+				A0E8718D2CF21DDB0084AD88 /* EventSection.swift in Sources */,
 				A0E871822CF1E1130084AD88 /* TicketHeaderElement.swift in Sources */,
 				A0E871732CF1771E0084AD88 /* Ticket.swift in Sources */,
 				A0E8718A2CF21B260084AD88 /* OrganizationEvent.swift in Sources */,

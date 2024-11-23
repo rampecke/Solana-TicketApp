@@ -11,4 +11,6 @@ import Foundation
 class Model {
     var myTickets: [Ticket] = []
     var allEvents: [OrganizationEvent] = []
+    
+    var profile: Profile = Profile(name: "", profilePictureUrl: "")
 }

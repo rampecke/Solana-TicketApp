@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(Model.self) var model: Model
     var body: some View {
         TabView {
             HomeView()
@@ -24,5 +25,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView().environment(MockModel() as Model)
 }
