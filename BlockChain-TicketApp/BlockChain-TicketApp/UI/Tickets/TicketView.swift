@@ -39,20 +39,25 @@ struct TicketView: View {
             
             // Place and Date
             VStack(alignment: .center, spacing: 4) {
-                Text(ticket.placeName)
+                Text("\(formatDateRange(date: ticket.startTime))")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                Text(formatDateRange(start: ticket.startTime, end: ticket.endTime))
+                Text(ticket.nameLocation)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
             .frame(maxWidth: .infinity) // Center horizontally
             
+            // Dotted Line
+            Divider()
+                .overlay(Color.gray)
+                .padding(.horizontal)
+                .frame(height: 1)
             
             // QR Code Placeholder
             Rectangle()
                 .fill(Color.gray.opacity(0.2))
-                .frame(width: 200, height: 200)
+                .frame(width: 170, height: 170)
                 .cornerRadius(8)
                 .overlay(
                     Image(uiImage: generateQRCode(from: "\(ticket.id)\n\(ticket.endTime)"))
@@ -64,9 +69,6 @@ struct TicketView: View {
                 )
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-
-            
-            //generateQRCode(from: "Test")
             
             // Dotted Line
             Divider()
@@ -112,12 +114,11 @@ struct TicketView: View {
     }
     
     // Helper function to format the date range
-    private func formatDateRange(start: Date, end: Date) -> String {
+    private func formatDateRange(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "E - MMM d - hh:mma"
-        let startString = formatter.string(from: start)
-        let endString = formatter.string(from: end)
-        return "\(startString) - \(endString)"
+        let dateString = formatter.string(from: date)
+        return dateString
     }
 }
 

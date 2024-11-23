@@ -21,8 +21,8 @@ struct SeatingElement: View {
                 .font(.headline)
                 .fontWeight(.semibold)
         }
-        .frame(minWidth: 50)
-        .padding()
+        .frame(minWidth: 60)
+        .padding(5)
     }
 }
 

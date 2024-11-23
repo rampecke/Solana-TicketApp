@@ -18,13 +18,13 @@ class Ticket {
     var ticketType: String
     var seating: Seating
     var location: CLLocationCoordinate2D
-    var placeName: String = ""
+    var nameLocation: String;
     var eventDescription: String
     var orderId: String
     
     private let geocoder = CLGeocoder()
     
-    init(id: UUID, ticketName: String, startTime: Date, endTime: Date, ticketType: String, seating: Seating, location: CLLocationCoordinate2D, eventDescription: String, orderId: String) {
+    init(id: UUID, ticketName: String, startTime: Date, endTime: Date, ticketType: String, seating: Seating, location: CLLocationCoordinate2D, nameLocation: String, eventDescription: String, orderId: String) {
         self.id = id
         self.ticketName = ticketName
         self.startTime = startTime
@@ -32,26 +32,28 @@ class Ticket {
         self.ticketType = ticketType
         self.seating = seating
         self.location = location
+        self.nameLocation = nameLocation
         self.eventDescription = eventDescription
         self.orderId = orderId
-        
-        resolvePlaceName()
     }
     
-    private func resolvePlaceName() {
+    //TODO: FIX
+    func resolvePlaceName() -> String {
         let location = CLLocation(latitude: self.location.latitude, longitude: self.location.longitude)
+        var placeName: String = ""
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
             guard let self = self else { return }
             if let placemark = placemarks?.first {
-                self.placeName = [
+                placeName = [
                     placemark.name,
                     placemark.locality,
                     placemark.administrativeArea,
                     placemark.country
                 ].compactMap { $0 }.joined(separator: ", ")
             } else {
-                self.placeName = "Unknown Place"
+                placeName = "Unknown Place"
             }
         }
+        return placeName
     }
 }
