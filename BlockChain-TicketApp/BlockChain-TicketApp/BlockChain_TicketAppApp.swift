@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct BlockChain_TicketAppApp: App {
+    @State var model: Model = Model()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environment(model)
         }
     }
 }
