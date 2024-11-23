@@ -11,15 +11,12 @@ import Web3Auth
 
 class MyCustomLogger: SolanaSwiftLogger {
     func log(event: String, data: String?, logLevel: SolanaSwiftLoggerLogLevel) {
-        print("\(event): \(data ?? "")")
+        //print("\(event): \(data ?? "")")
         // Custom log goes here
     }
 }
 
-// AppDelegate or somewhere else
-
-
-class SolanaService2 {
+class SolanaService {
     private let network = Network.devnet
     
     private let apiClient: JSONRPCAPIClient;
@@ -153,11 +150,10 @@ class SolanaService2 {
             let mintId = tokenAccount.account.data.mint
             
             let assetInfo = try await apiClient.getAsset(address: mintId.base58EncodedString)
+            print(assetInfo)
             
-            print("It works")
-            //assets.append(assetInfo)
+            assets.append(assetInfo)
         }
-        
         
         return assets
     }
