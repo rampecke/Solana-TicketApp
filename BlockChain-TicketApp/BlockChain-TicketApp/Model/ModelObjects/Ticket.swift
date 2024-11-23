@@ -46,8 +46,8 @@ class Ticket {
                 self.placeName = [
                     placemark.name,
                     placemark.locality,
-                    //placemark.administrativeArea,
-                    //placemark.country
+                    placemark.administrativeArea,
+                    placemark.country
                 ].compactMap { $0 }.joined(separator: ", ")
             } else {
                 self.placeName = "Unknown Place"

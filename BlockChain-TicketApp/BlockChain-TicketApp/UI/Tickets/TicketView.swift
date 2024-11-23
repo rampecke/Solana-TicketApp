@@ -11,20 +11,21 @@ import CoreImage.CIFilterBuiltins
 struct TicketView: View {
     @Bindable var ticket: Ticket
     
-    func generateQRCode(from string: String) -> Image {
+    func generateQRCode(from string: String) -> UIImage {
         let context = CIContext()
         let filter = CIFilter.qrCodeGenerator()
         
         // Input the string into the QR code generator
         filter.message = Data(string.utf8)
         
+        
         if let outputImage = filter.outputImage {
-            if let cgImage = context.createCGImage(outputImage.transformed(by: CGAffineTransform(scaleX: 10, y: 10)), from: outputImage.extent) {
-                return Image(decorative: cgImage, scale: 1.0, orientation: .up)
+            if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+                return UIImage(cgImage: cgImage)
             }
         }
         
-        return Image(systemName: "xmark.circle") // Fallback in case QR code generation fails
+        return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
     
     var body: some View {
@@ -47,20 +48,25 @@ struct TicketView: View {
             }
             .frame(maxWidth: .infinity) // Center horizontally
             
+            
             // QR Code Placeholder
             Rectangle()
                 .fill(Color.gray.opacity(0.2))
-                .frame(width: 150, height: 150)
+                .frame(width: 200, height: 200)
                 .cornerRadius(8)
-                .overlay(Text("QR Code").foregroundColor(.gray))
+                .overlay(
+                    Image(uiImage: generateQRCode(from: "\(ticket.id)\n\(ticket.endTime)"))
+                        .interpolation(.none)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150, height: 150)
+                        .padding()
+                )
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
+
             
-            
-//            generateQRCode(from: "Test bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteenTest bllahtehhzn nbazjlenbagg, zahennehjahahan, teheheteen")
-//                .resizable()
-//                .interpolation(.none)
-//                .padding(.vertical, 16)
+            //generateQRCode(from: "Test")
             
             // Dotted Line
             Divider()
