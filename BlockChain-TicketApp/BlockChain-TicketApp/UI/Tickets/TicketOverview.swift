@@ -14,15 +14,39 @@ struct TicketOverview: View {
     //Expandable Text
     @State private var isExpanded: Bool = false
     
+    // Address Variables
+    @State private var address: String = "Loading address..."
+    
     init(ticket: Ticket) {
         self.ticket = ticket
+    }
+    
+    private func fetchAddress(from coordinate: CLLocationCoordinate2D) {
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let error = error {
+                print("Failed to reverse geocode location: \(error)")
+                address = "Unknown location"
+                return
+            }
+            
+            if let placemark = placemarks?.first {
+                let street = placemark.thoroughfare ?? ""
+                let city = placemark.locality ?? ""
+                address = "\(street), \(city)"
+            } else {
+                address = "Unknown location"
+            }
+        }
     }
     
     var body: some View {
         ScrollView {
             VStack(spacing:10) {
                 ZStack(alignment: .bottom) {
-                    Image("ExamplePicture") // Replace with your image name
+                    Image("ExamplePicture") // TODO: Replace with your image name
                         .resizable()
                         .scaledToFill()
                         .frame(maxWidth: .infinity, maxHeight: 250, alignment: .topLeading)
@@ -63,14 +87,17 @@ struct TicketOverview: View {
                 
                 HStack {
                     Image(systemName: "pin.fill")
-                        .font(.headline) //
+                        .font(.subheadline) //
                         .foregroundColor(.blue)
 
-                    Text(ticket.nameLocation) //TODO: Fetch Street from MapKit
-                        .font(.headline)
+                    Text(address) //TODO: Fetch Street from MapKit
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
                 }.padding(.horizontal)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .onAppear {
+                    fetchAddress(from: ticket.location)
+                }
                 
                 //Map
                 Map() { //TODO: Maybe zoom out a bit more

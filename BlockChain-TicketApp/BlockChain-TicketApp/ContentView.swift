@@ -10,7 +10,12 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            TicketOverview(ticket: MockModel().getExampleTicket()) //Exchange for a list of tickets
+            HomeView()
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+            
+            TicketOverview(ticket: MockModel().getExampleTicket())
                 .tabItem {
                     Label("Tickets", systemImage: "ticket")
                 }

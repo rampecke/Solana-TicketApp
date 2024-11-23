@@ -10,4 +10,5 @@ import Foundation
 @Observable
 class Model {
     var myTickets: [Ticket] = []
+    var allEvents: [OrganizationEvent] = []
 }
