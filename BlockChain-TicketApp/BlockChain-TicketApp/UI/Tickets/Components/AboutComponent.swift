@@ -28,7 +28,7 @@ struct AboutComponent: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal)
-            if organizationEvent.eventDescription.count > 300 {
+            if organizationEvent.eventDescription.count > 200 {
                 HStack(alignment: .top){
                     Button(action: {
                         isExpanded.toggle()

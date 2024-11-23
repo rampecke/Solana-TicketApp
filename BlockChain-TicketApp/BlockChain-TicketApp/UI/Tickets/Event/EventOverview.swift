@@ -10,6 +10,8 @@ import SwiftUI
 struct EventOverview: View {
     @Bindable var organizationEvent: OrganizationEvent
     
+    @State var buyOpen: Bool = false
+    
     var body: some View {
         ScrollView {
             VStack(spacing:10) {
@@ -26,11 +28,35 @@ struct EventOverview: View {
                         .padding(.horizontal, 20)
                 }.padding(.horizontal)
                 
+                Button(action: {
+                    buyOpen.toggle()
+                }) {
+                    HStack {
+                        Image(systemName: "ticket")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                        
+                        Text("Buy tickets - from \(organizationEvent.returnCheapestPrice())€")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                    }.foregroundColor(Color("onAccentColor"))
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color("accentColor"))
+                    .cornerRadius(15)
+                    .padding(.horizontal)
+                }
+                
                 AboutComponent(organizationEvent: organizationEvent)
                 
                 MapComponent(organizationEvent: organizationEvent)
             }.padding()
-        }
+        }.sheet(isPresented: $buyOpen, content: {
+            Text("Hi")
+                .presentationDetents([.height(450)])
+                .presentationDragIndicator(.visible)
+        })
     }
 }
 

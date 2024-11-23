@@ -53,6 +53,11 @@ class OrganizationEvent {
         formatter.pmSymbol = " PM"
         return formatter.string(from: date)
     }
+    
+    //TODO: Needs to return a real price
+    func returnCheapestPrice() -> Int {
+        return 49
+    }
 }
 
 enum EventCategoryType: String, CaseIterable {
