@@ -6,14 +6,13 @@
 //
 
 import Foundation
+import SolanaSwift
 
 @Observable
 class Profile {
-    var name: String
-    var profilePictureUrl: String
+    var name: String?
+    var profilePictureUrl: String?
+    var keypair: KeyPair?
     
-    init(name: String, profilePictureUrl: String) {
-        self.name = name
-        self.profilePictureUrl = profilePictureUrl
-    }
+    var signedIn: Bool = false
 }

@@ -12,7 +12,9 @@ class Model {
     var myTickets: [Ticket] = []
     var allEvents: [OrganizationEvent] = []
     
-    var profile: Profile = Profile(name: "", profilePictureUrl: "")
+    var solana = SolanaService()
+    
+    var profile: Profile = Profile()
     
     func returnListSorted(sortOption: SortOptions) -> [OrganizationEvent] {
         return allEvents //TODO: actually sort by the type

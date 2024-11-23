@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,16 @@
 		A0E871962CF257CD0084AD88 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871952CF257CD0084AD88 /* Profile.swift */; };
 		A0E871982CF25A5B0084AD88 /* TicketCountdownElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871972CF25A5B0084AD88 /* TicketCountdownElement.swift */; };
 		A0E8719C2CF268550084AD88 /* TicketCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8719B2CF268550084AD88 /* TicketCountdown.swift */; };
+		F4ADFCD72CF2162A002094E9 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4ADFCD62CF2162A002094E9 /* SolanaSwift */; };
+		F4ADFCDD2CF21CFE002094E9 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4ADFCDC2CF21CFE002094E9 /* SolanaSwift */; };
+		F4ADFCE52CF2562C002094E9 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4ADFCE42CF2562C002094E9 /* SolanaSwift */; };
+		F4ADFCE82CF2567C002094E9 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4ADFCE72CF2567C002094E9 /* SolanaSwift */; };
+		F4D8DA172CF1F6F50032C526 /* Web3Auth in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA162CF1F6F50032C526 /* Web3Auth */; };
+		F4D8DA192CF1F70A0032C526 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA182CF1F70A0032C526 /* SolanaSwift */; };
+		F4D8DA1C2CF210F70032C526 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA1B2CF210F70032C526 /* SolanaSwift */; };
+		F4E863072CF1DC55006382DF /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E863062CF1DC55006382DF /* SolanaSwift */; };
+		F4E8630F2CF1F688006382DF /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E8630E2CF1F688006382DF /* SolanaSwift */; };
+		F4E863112CF1F698006382DF /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E863102CF1F698006382DF /* SolanaSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,11 +67,25 @@
 		A0E8719B2CF268550084AD88 /* TicketCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCountdown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F4E862FF2CF1D148006382DF /* Solana */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Solana; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		A0E871582CF173F20084AD88 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D8DA1C2CF210F70032C526 /* SolanaSwift in Frameworks */,
+				F4E8630F2CF1F688006382DF /* SolanaSwift in Frameworks */,
+				F4E863072CF1DC55006382DF /* SolanaSwift in Frameworks */,
+				F4ADFCE52CF2562C002094E9 /* SolanaSwift in Frameworks */,
+				F4ADFCD72CF2162A002094E9 /* SolanaSwift in Frameworks */,
+				F4D8DA192CF1F70A0032C526 /* SolanaSwift in Frameworks */,
+				F4ADFCE82CF2567C002094E9 /* SolanaSwift in Frameworks */,
+				F4D8DA172CF1F6F50032C526 /* Web3Auth in Frameworks */,
+				F4ADFCDD2CF21CFE002094E9 /* SolanaSwift in Frameworks */,
+				F4E863112CF1F698006382DF /* SolanaSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +153,7 @@
 		A0E871702CF176AD0084AD88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F4E862FF2CF1D148006382DF /* Solana */,
 				A0E871712CF176BF0084AD88 /* ModelObjects */,
 				A0E871742CF17AE80084AD88 /* Model.swift */,
 				A0E871782CF180D90084AD88 /* MockModel.swift */,
@@ -200,6 +225,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				F4E862FF2CF1D148006382DF /* Solana */,
+			);
 			name = "BlockChain-TicketApp";
 			productName = "BlockChain-TicketApp";
 			productReference = A0E8715B2CF173F20084AD88 /* BlockChain-TicketApp.app */;
@@ -229,6 +257,10 @@
 				Base,
 			);
 			mainGroup = A0E871522CF173F20084AD88;
+			packageReferences = (
+				F4E8630B2CF1F62F006382DF /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */,
+				F4ADFCE62CF2567C002094E9 /* XCLocalSwiftPackageReference "../solana-swift" */,
+			);
 			productRefGroup = A0E8715C2CF173F20084AD88 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -408,7 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BlockChain-TicketApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 2CZTZG99CX;
+				DEVELOPMENT_TEAM = KG322N2Q58;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -421,7 +453,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ramonaeckert.BlockChain-TicketApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simolation.BlockChain-TicketApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -437,7 +469,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BlockChain-TicketApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 2CZTZG99CX;
+				DEVELOPMENT_TEAM = KG322N2Q58;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -450,7 +482,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ramonaeckert.BlockChain-TicketApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simolation.BlockChain-TicketApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -480,6 +512,89 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		F4ADFCE62CF2567C002094E9 /* XCLocalSwiftPackageReference "../solana-swift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../solana-swift";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4ADFCD52CF2162A002094E9 /* XCRemoteSwiftPackageReference "solana-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Simolation/solana-swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		F4E863052CF1DC55006382DF /* XCRemoteSwiftPackageReference "solana-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/p2p-org/solana-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		F4E8630B2CF1F62F006382DF /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/web3auth/web3auth-swift-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4ADFCD62CF2162A002094E9 /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4ADFCD52CF2162A002094E9 /* XCRemoteSwiftPackageReference "solana-swift" */;
+			productName = SolanaSwift;
+		};
+		F4ADFCDC2CF21CFE002094E9 /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SolanaSwift;
+		};
+		F4ADFCE42CF2562C002094E9 /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SolanaSwift;
+		};
+		F4ADFCE72CF2567C002094E9 /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SolanaSwift;
+		};
+		F4D8DA162CF1F6F50032C526 /* Web3Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E8630B2CF1F62F006382DF /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */;
+			productName = Web3Auth;
+		};
+		F4D8DA182CF1F70A0032C526 /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E863052CF1DC55006382DF /* XCRemoteSwiftPackageReference "solana-swift" */;
+			productName = SolanaSwift;
+		};
+		F4D8DA1B2CF210F70032C526 /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SolanaSwift;
+		};
+		F4E863062CF1DC55006382DF /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E863052CF1DC55006382DF /* XCRemoteSwiftPackageReference "solana-swift" */;
+			productName = SolanaSwift;
+		};
+		F4E8630E2CF1F688006382DF /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E863052CF1DC55006382DF /* XCRemoteSwiftPackageReference "solana-swift" */;
+			productName = SolanaSwift;
+		};
+		F4E863102CF1F698006382DF /* SolanaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E863052CF1DC55006382DF /* XCRemoteSwiftPackageReference "solana-swift" */;
+			productName = SolanaSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A0E871532CF173F20084AD88 /* Project object */;
 }

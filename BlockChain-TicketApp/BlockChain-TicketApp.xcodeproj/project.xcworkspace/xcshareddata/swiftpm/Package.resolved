@@ -1,0 +1,78 @@
+{
+  "originHash" : "e0368af18895611174a5ba47b976e4dde473b75bb3cff3c9951be4f0f47c624a",
+  "pins" : [
+    {
+      "identity" : "bigint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/attaswift/BigInt.git",
+      "state" : {
+        "revision" : "a7ee11486233ba45f5ceee0b8cb3d6629ed450ef",
+        "version" : "5.5.0"
+      }
+    },
+    {
+      "identity" : "curvelib.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tkey/curvelib.swift",
+      "state" : {
+        "revision" : "9f88bd5e56d1df443a908f7a7e81ae4f4d9170ea",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "keychain-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/keychain-swift.git",
+      "state" : {
+        "revision" : "d108a1fa6189e661f91560548ef48651ed8d93b9",
+        "version" : "20.0.0"
+      }
+    },
+    {
+      "identity" : "secp256k1.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Boilertalk/secp256k1.swift.git",
+      "state" : {
+        "revision" : "cd187c632fb812fd93711a9f7e644adb7e5f97f0",
+        "version" : "0.1.7"
+      }
+    },
+    {
+      "identity" : "session-manager-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Web3Auth/session-manager-swift.git",
+      "state" : {
+        "revision" : "20cc7bff065d7fe53164d17e7714a3f17d4cea2a",
+        "version" : "4.0.2"
+      }
+    },
+    {
+      "identity" : "task-retrying-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bigearsenal/task-retrying-swift.git",
+      "state" : {
+        "revision" : "208f1e8dfa93022a7d39ab5b334d5f43a934d4b1",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "tweetnacl-swiftwrap",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bitmark-inc/tweetnacl-swiftwrap.git",
+      "state" : {
+        "revision" : "f8fd111642bf2336b11ef9ea828510693106e954",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "web3auth-swift-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/web3auth/web3auth-swift-sdk",
+      "state" : {
+        "revision" : "a54487cd9f010a9caa7338c70782da577af42c86",
+        "version" : "9.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}
