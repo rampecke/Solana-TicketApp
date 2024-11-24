@@ -36,5 +36,5 @@ struct TicketList: View {
 }
 
 #Preview {
-    TicketList().environment(MockModel() as Model)
+    TicketList().environment(PreviewModel() as Model)
 }

@@ -20,7 +20,7 @@
 		A0E871732CF1771E0084AD88 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871722CF1771E0084AD88 /* Ticket.swift */; };
 		A0E871752CF17AE80084AD88 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871742CF17AE80084AD88 /* Model.swift */; };
 		A0E871772CF17C340084AD88 /* Seating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871762CF17C340084AD88 /* Seating.swift */; };
-		A0E871792CF180D90084AD88 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871782CF180D90084AD88 /* MockModel.swift */; };
+		A0E871792CF180D90084AD88 /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871782CF180D90084AD88 /* PreviewModel.swift */; };
 		A0E8717C2CF1849F0084AD88 /* SeatingElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8717B2CF1849F0084AD88 /* SeatingElement.swift */; };
 		A0E8717E2CF1D94C0084AD88 /* TicketOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8717D2CF1D94C0084AD88 /* TicketOverview.swift */; };
 		A0E871802CF1DF740084AD88 /* TicketHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8717F2CF1DF740084AD88 /* TicketHeader.swift */; };
@@ -70,7 +70,7 @@
 		A0E871722CF1771E0084AD88 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		A0E871742CF17AE80084AD88 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A0E871762CF17C340084AD88 /* Seating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
-		A0E871782CF180D90084AD88 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
+		A0E871782CF180D90084AD88 /* PreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
 		A0E8717B2CF1849F0084AD88 /* SeatingElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatingElement.swift; sourceTree = "<group>"; };
 		A0E8717D2CF1D94C0084AD88 /* TicketOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketOverview.swift; sourceTree = "<group>"; };
 		A0E8717F2CF1DF740084AD88 /* TicketHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketHeader.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 				F4E862FF2CF1D148006382DF /* Solana */,
 				A0E871712CF176BF0084AD88 /* ModelObjects */,
 				A0E871742CF17AE80084AD88 /* Model.swift */,
-				A0E871782CF180D90084AD88 /* MockModel.swift */,
+				A0E871782CF180D90084AD88 /* PreviewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -369,7 +369,7 @@
 				A0E871982CF25A5B0084AD88 /* TicketCountdownElement.swift in Sources */,
 				A0E871772CF17C340084AD88 /* Seating.swift in Sources */,
 				A0E8716F2CF176020084AD88 /* TicketView.swift in Sources */,
-				A0E871792CF180D90084AD88 /* MockModel.swift in Sources */,
+				A0E871792CF180D90084AD88 /* PreviewModel.swift in Sources */,
 				A0E8718F2CF22D600084AD88 /* EventCard.swift in Sources */,
 				A089057C2CF2C52600107F8A /* CollectableView.swift in Sources */,
 				A0E871802CF1DF740084AD88 /* TicketHeader.swift in Sources */,

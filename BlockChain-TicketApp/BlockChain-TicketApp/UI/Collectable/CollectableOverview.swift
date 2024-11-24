@@ -47,5 +47,5 @@ struct CollectableOverview: View {
 }
 
 #Preview {
-    CollectableOverview(collectable: MockModel().getExampleCollectable())
+    CollectableOverview(collectable: PreviewModel().getExampleCollectable())
 }

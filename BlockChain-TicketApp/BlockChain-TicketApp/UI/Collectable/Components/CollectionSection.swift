@@ -46,5 +46,5 @@ struct CollectionSection: View {
 }
 
 #Preview {
-    CollectionSection(collection: MockModel().collections[0])
+    CollectionSection(collection: PreviewModel().collections[0])
 }

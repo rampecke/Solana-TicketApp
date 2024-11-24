@@ -118,7 +118,7 @@ struct CollectableCardSmall: View {
 
 #Preview {
     return VStack {
-        CollectableCard(collectable: MockModel().getExampleCollectable())
-        CollectableCardSmall(collectable: MockModel().getExampleCollectable())
+        CollectableCard(collectable: PreviewModel().getExampleCollectable())
+        CollectableCardSmall(collectable: PreviewModel().getExampleCollectable())
     }
 }

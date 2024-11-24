@@ -127,6 +127,6 @@ struct TicketView: View {
 
 
 #Preview {
-    let mockModel = MockModel()
-    return TicketView(ticket: mockModel.getExampleTicket())
+    let previewModel = PreviewModel()
+    return TicketView(ticket: previewModel.getExampleTicket())
 }

@@ -42,5 +42,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(profile: Profile(name: "Simon Osterlehner", profilePictureUrl: "ExamplePicture")).environment(MockModel() as Model)
+    ProfileView(profile: Profile(name: "Simon Osterlehner", profilePictureUrl: "ExamplePicture")).environment(PreviewModel() as Model)
 }

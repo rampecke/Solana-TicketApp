@@ -35,5 +35,5 @@ struct TicketCountdown: View {
 
 #Preview {
     @State var remaning: String = "10:08:09:11"
-    return TicketCountdown(ticket: MockModel().getExampleTicket(), remaningTime: $remaning)
+    return TicketCountdown(ticket: PreviewModel().getExampleTicket(), remaningTime: $remaning)
 }

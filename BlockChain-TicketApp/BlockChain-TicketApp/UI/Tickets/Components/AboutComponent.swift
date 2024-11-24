@@ -46,5 +46,5 @@ struct AboutComponent: View {
 }
 
 #Preview {
-    AboutComponent(organizationEvent: MockModel().getExampleTicket().organizationEvent)
+    AboutComponent(organizationEvent: PreviewModel().getExampleTicket().organizationEvent)
 }

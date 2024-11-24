@@ -34,5 +34,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView().environment(MockModel() as Model)
+    ContentView().environment(PreviewModel() as Model)
 }

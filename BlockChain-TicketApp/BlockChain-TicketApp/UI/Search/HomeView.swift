@@ -41,7 +41,7 @@ struct HomeView: View {
                             Spacer()
                         }.frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal)
-                        TicketCountdownElement(ticket: model.returnClosestTicket() ?? MockModel().getExampleTicket()).padding(.bottom, 10).padding(.horizontal)
+                        TicketCountdownElement(ticket: model.returnClosestTicket() ?? PreviewModel().getExampleTicket()).padding(.bottom, 10).padding(.horizontal)
                         
                     }
                     EventSection(sectionName: "Popular Events", sortOption: SortOptions.Popular)
@@ -56,5 +56,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView().environment(MockModel() as Model)
+    HomeView().environment(PreviewModel() as Model)
 }

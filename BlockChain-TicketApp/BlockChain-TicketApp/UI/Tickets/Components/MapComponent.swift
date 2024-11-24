@@ -63,5 +63,5 @@ struct MapComponent: View {
 }
 
 #Preview {
-    MapComponent(organizationEvent: MockModel().getExampleTicket().organizationEvent)
+    MapComponent(organizationEvent: PreviewModel().getExampleTicket().organizationEvent)
 }
