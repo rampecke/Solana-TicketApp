@@ -23,7 +23,7 @@ struct ContentView: View {
                     Label("Tickets", systemImage: "ticket")
                 }
             
-            CollectableOverview()
+            CollectableView()
                 .tabItem {
                     Label("Collection", systemImage: "folder")
                 }

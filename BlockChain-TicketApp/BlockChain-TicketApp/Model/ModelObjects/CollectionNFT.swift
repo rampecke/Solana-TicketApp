@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class Collection {
+class CollectionNFT: Identifiable {
     var uuid: UUID = UUID()
     var titel: String
     var event: OrganizationEvent

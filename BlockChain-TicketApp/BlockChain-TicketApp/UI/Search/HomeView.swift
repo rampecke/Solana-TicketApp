@@ -42,6 +42,7 @@ struct HomeView: View {
                         }.frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal)
                         TicketCountdownElement(ticket: model.returnClosestTicket() ?? MockModel().getExampleTicket()).padding(.bottom, 10).padding(.horizontal)
+                        
                     }
                     EventSection(sectionName: "Popular Events", sortOption: SortOptions.Popular)
                     EventSection(sectionName: "Nearby Event", sortOption: SortOptions.CloseBy)

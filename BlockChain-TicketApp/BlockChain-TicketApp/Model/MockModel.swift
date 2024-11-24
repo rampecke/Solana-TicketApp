@@ -12,6 +12,8 @@ class MockModel: Model {
     override init() {
         super.init()
         
+        self.collections = [CollectionNFT(titel: "More - Macklemore", event: OrganizationEvent(eventId: UUID(), popularityScore: 4.8, startTime:  Date(), endTime: Calendar.current.date(byAdding: .hour, value: 3, to: Date())!, location: CLLocationCoordinate2D(latitude: 48.262756, longitude:  11.668856), nameLocation: "TUM", eventDescription: "Get ready for an unforgettable night as Grammy-winning artist Macklemore takes the stage! Known for his electrifying performances and chart-topping hits like Thrift Shop, Can't Hold Us, and Glorious, Macklemore brings his unique blend of hip-hop, soul, and raw energy to the live concert experience. Join thousands of fans for an evening filled with infectious beats, heartfelt lyrics, and the kind of energy that only Macklemore can deliver. Whether you're a longtime fan or discovering his music for the first time, this concert is a celebration of individuality, passion, and community.", eventCategory: EventCategoryType.Music, eventName: "Macklemore - The Ben Tour", organizerName: "Macklemore", imageUrl: ""), possibleCollectables: [self.getExampleCollectable(), self.getExampleCollectable2(), self.getExampleCollectable(), self.getExampleCollectable2(),self.getExampleCollectable(), self.getExampleCollectable2()]), CollectionNFT(titel: "More - Macklemore", event: OrganizationEvent(eventId: UUID(), popularityScore: 4.8, startTime:  Date(), endTime: Calendar.current.date(byAdding: .hour, value: 3, to: Date())!, location: CLLocationCoordinate2D(latitude: 48.262756, longitude:  11.668856), nameLocation: "TUM", eventDescription: "Get ready for an unforgettable night as Grammy-winning artist Macklemore takes the stage! Known for his electrifying performances and chart-topping hits like Thrift Shop, Can't Hold Us, and Glorious, Macklemore brings his unique blend of hip-hop, soul, and raw energy to the live concert experience. Join thousands of fans for an evening filled with infectious beats, heartfelt lyrics, and the kind of energy that only Macklemore can deliver. Whether you're a longtime fan or discovering his music for the first time, this concert is a celebration of individuality, passion, and community.", eventCategory: EventCategoryType.Music, eventName: "Macklemore - The Ben Tour", organizerName: "Macklemore", imageUrl: ""), possibleCollectables: [self.getExampleCollectable(), self.getExampleCollectable2(), self.getExampleCollectable(), self.getExampleCollectable2()])]
+        
         self.allEvents = [
             // Music Events
             OrganizationEvent(eventId: UUID(), popularityScore: 4.8, startTime:  Date(), endTime: Calendar.current.date(byAdding: .hour, value: 3, to: Date())!, location: CLLocationCoordinate2D(latitude: 48.262756, longitude:  11.668856), nameLocation: "TUM", eventDescription: "Get ready for an unforgettable night as Grammy-winning artist Macklemore takes the stage! Known for his electrifying performances and chart-topping hits like Thrift Shop, Can't Hold Us, and Glorious, Macklemore brings his unique blend of hip-hop, soul, and raw energy to the live concert experience. Join thousands of fans for an evening filled with infectious beats, heartfelt lyrics, and the kind of energy that only Macklemore can deliver. Whether you're a longtime fan or discovering his music for the first time, this concert is a celebration of individuality, passion, and community.", eventCategory: EventCategoryType.Music, eventName: "Macklemore - The Ben Tour", organizerName: "Macklemore", imageUrl: ""),
@@ -153,6 +155,8 @@ class MockModel: Model {
                     organizerName: "Milan Fashion Group",
                     imageUrl: ""
                 )
+            
+            
         ]
         
         let calendar = Calendar.current
@@ -199,6 +203,21 @@ class MockModel: Model {
             fatalError("Failed to create start date")
         }
         
-        return Collectable(titel: "Macklemore D-Tour", collection: Collection(titel: "More - Macklemore", event: OrganizationEvent(eventId: UUID(), popularityScore: 4.8, startTime: startTime, endTime: endTime, location: CLLocationCoordinate2D(latitude: 48.262756, longitude:  11.668856), nameLocation: "TUM", eventDescription: "Get ready for an unforgettable night as Grammy-winning artist Macklemore takes the stage! Known for his electrifying performances and chart-topping hits like Thrift Shop, Can't Hold Us, and Glorious, Macklemore brings his unique blend of hip-hop, soul, and raw energy to the live concert experience. Join thousands of fans for an evening filled with infectious beats, heartfelt lyrics, and the kind of energy that only Macklemore can deliver. Whether you're a longtime fan or discovering his music for the first time, this concert is a celebration of individuality, passion, and community.", eventCategory: EventCategoryType.Music, eventName: "Macklemore - The Ben Tour", organizerName: "Macklemore", imageUrl: ""), possibleCollectables: []), imageUrl: "", price: 3.115, numberInCollection: 155, totalNumberInCollection: 2057)
+        return Collectable(titel: "Macklemore D-Tour", collection: CollectionNFT(titel: "More - Macklemore", event: OrganizationEvent(eventId: UUID(), popularityScore: 4.8, startTime: startTime, endTime: endTime, location: CLLocationCoordinate2D(latitude: 48.262756, longitude:  11.668856), nameLocation: "TUM", eventDescription: "Get ready for an unforgettable night as Grammy-winning artist Macklemore takes the stage! Known for his electrifying performances and chart-topping hits like Thrift Shop, Can't Hold Us, and Glorious, Macklemore brings his unique blend of hip-hop, soul, and raw energy to the live concert experience. Join thousands of fans for an evening filled with infectious beats, heartfelt lyrics, and the kind of energy that only Macklemore can deliver. Whether you're a longtime fan or discovering his music for the first time, this concert is a celebration of individuality, passion, and community.", eventCategory: EventCategoryType.Music, eventName: "Macklemore - The Ben Tour", organizerName: "Macklemore", imageUrl: ""), possibleCollectables: []), imageUrl: "", price: 3.115, numberInCollection: 155, totalNumberInCollection: 2057, ownedByMe: true)
+    }
+    
+    func getExampleCollectable2() -> Collectable {
+        let calendar = Calendar.current
+        
+        let startTimeComponents = DateComponents(year: 2024, month: 11, day: 24, hour: 10, minute: 0)
+        guard let startTime = calendar.date(from: startTimeComponents) else {
+            fatalError("Failed to create start date")
+        }
+        let endTimeComponents = DateComponents(year: 2024, month: 11, day: 25, hour: 22, minute: 0)
+        guard let endTime = calendar.date(from: endTimeComponents) else {
+            fatalError("Failed to create start date")
+        }
+        
+        return Collectable(titel: "Macklemore D-Tour", collection: CollectionNFT(titel: "More - Macklemore", event: OrganizationEvent(eventId: UUID(), popularityScore: 4.8, startTime: startTime, endTime: endTime, location: CLLocationCoordinate2D(latitude: 48.262756, longitude:  11.668856), nameLocation: "TUM", eventDescription: "Get ready for an unforgettable night as Grammy-winning artist Macklemore takes the stage! Known for his electrifying performances and chart-topping hits like Thrift Shop, Can't Hold Us, and Glorious, Macklemore brings his unique blend of hip-hop, soul, and raw energy to the live concert experience. Join thousands of fans for an evening filled with infectious beats, heartfelt lyrics, and the kind of energy that only Macklemore can deliver. Whether you're a longtime fan or discovering his music for the first time, this concert is a celebration of individuality, passion, and community.", eventCategory: EventCategoryType.Music, eventName: "Macklemore - The Ben Tour", organizerName: "Macklemore", imageUrl: ""), possibleCollectables: []), imageUrl: "", price: 3.115, numberInCollection: 155, totalNumberInCollection: 2057, ownedByMe: false)
     }
 }

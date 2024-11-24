@@ -53,8 +53,8 @@ struct EventOverview: View {
                 MapComponent(organizationEvent: organizationEvent)
             }.padding()
         }.sheet(isPresented: $buyOpen, content: {
-            Text("Hi")
-                .presentationDetents([.height(450)])
+            PayView(event: organizationEvent)
+                .presentationDetents([.height(650)])
                 .presentationDragIndicator(.visible)
         })
     }
