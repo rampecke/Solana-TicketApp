@@ -1,47 +1,41 @@
-import { Connection, Keypair, PublicKey, Transaction } from "@solana/web3.js";
-import { programs } from "@metaplex/js";
+import { clusterApiUrl, Keypair, PublicKey } from '@solana/web3.js';
+import { createUmi } from '@metaplex-foundation/umi-bundle-defaults';
+import { createSignerFromKeypair, signerIdentity } from '@metaplex-foundation/umi';
+import { TokenStandard, mplTokenMetadata, transferV1 } from '@metaplex-foundation/mpl-token-metadata';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const keypair = Keypair.generate();
-const connection = new Connection("https://api.devnet.solana.com");
+const WALLET_SECRET_KEY = process.env.WALLET_SECRET_KEY;
 
-const {
-  metadata: { Metadata },
-} = programs;
+const umi = createUmi(clusterApiUrl('devnet')).use(mplTokenMetadata())
+
+const keypair1 = Keypair.fromSecretKey(new Uint8Array(JSON.parse(WALLET_SECRET_KEY ?? '')));
+
+// Usually Keypairs are saved as Uint8Array, so you  
+// need to transform it into a usable keypair.  
+let keypair = umi.eddsa.createKeypairFromSecretKey(keypair1.secretKey);
+
+// Before Umi can use this Keypair you need to generate 
+// a Signer type with it.  
+const signer = createSignerFromKeypair(umi, keypair);
+
+// Tell Umi to use the new signer.
+umi.use(signerIdentity(signer))
 
 // Send an NFT to the provided address
 export const sendNFT = async (nftAddress: string, recipientAddress: string) => {
   const nftPublicKey = new PublicKey(nftAddress);
   const recipientPublicKey = new PublicKey(recipientAddress);
 
-  // Fetch the metadata of the NFT
-  const metadataPDA = await Metadata.getPDA(nftPublicKey);
-  const metadata = await Metadata.load(connection, metadataPDA);
-
-  // Get the associated token account of the recipient
-  const recipientTokenAccount =
-    await programs.token.getOrCreateAssociatedTokenAccount(
-      connection,
-      recipientPublicKey,
-      metadata.data.mint,
-      keypair,
-    );
-
-  // Create the transaction to transfer the NFT
-  const transaction = new Transaction().add(
-    programs.token.createTransferInstruction(
-      keypair.publicKey,
-      recipientTokenAccount.address,
-      keypair.publicKey,
-      1, // Assuming the NFT has a supply of 1
-      [],
-      programs.token.TOKEN_PROGRAM_ID,
-    ),
-  );
-
-  const signature = await connection.sendTransaction(transaction, [keypair]);
-  await connection.confirmTransaction(signature);
-
+  const transaction = await transferV1(umi, {
+      mint: nftPublicKey,
+      authority: signer,
+      tokenOwner: signer.publicKey,
+      destinationOwner: recipientPublicKey,
+      tokenStandard: TokenStandard.NonFungible,
+    }).sendAndConfirm(umi)
+  console.log(transaction);
   console.log(
-    `NFT sent to ${recipientAddress}. Transaction signature: ${signature}`,
+    `NFT sent to ${recipientAddress}.`,
   );
 };
