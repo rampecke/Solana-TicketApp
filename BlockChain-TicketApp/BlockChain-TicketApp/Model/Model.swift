@@ -115,7 +115,17 @@ class Model {
         
         let collectable = try JSONDecoder().decode(CollectableDto.self, from: data)
         
-        myCollectables.append(Collectable.convertFromDtos(collectableDtos: [collectable])[0])
+        myCollectables.append(Collectable.convertFromDtos(collectableDtos: [collectable], myAddress: profile.getPublicKey())[0])
+    }
+    
+    func fetchCollections() async throws -> [CollectionNFT] {
+        let url = URL(string: "\(apiEndpint)/collections")!
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let collections = try JSONDecoder().decode([CollectionDto].self, from: data)
+        
+        return CollectionNFT.convertFromDtos(collectionDtos: collections, myAddress: profile.getPublicKey());
     }
     
     func authenticate() async throws {
@@ -130,6 +140,7 @@ class Model {
         // Fetch the events
         allEvents = try await fetchEvents()
         myTickets = try await fetchMyTickets()
+        collections = try await fetchCollections()
     }
 }
 

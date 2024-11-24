@@ -102,26 +102,38 @@ async function main() {
 
     return [events, tickets, collections];
   };
-  const [events, tickets, collections] = await traverseFolder(
-    "/Users/simon/Downloads/Hackathon/Events"
-  );
+  // const [events, tickets, collections] = await traverseFolder(
+  //   "/Users/simon/Downloads/Hackathon/Events"
+  // );
 
-  console.log(events);
+  // console.log(events);
 
-  // Create events
-  await prisma.event.createMany({
-    data: events,
-  });
+  // // Create events
+  // await prisma.event.createMany({
+  //   data: events,
+  // });
 
-  // Create tickets
-  await prisma.ticket.createMany({
-    data: tickets,
-  });
+  // // Create tickets
+  // await prisma.ticket.createMany({
+  //   data: tickets,
+  // });
 
-  // Create collections
-  await prisma.collection.createMany({
-    data: collections,
-  });
+  // // Create collections
+  // await prisma.collection.createMany({
+  //   data: collections,
+  // });
+
+  // Ed Sheeran
+  // "fead9cdf-c28a-460d-a994-402538d22423"
+
+  // Macklemore
+  // "691c24c9-e42f-4202-ac97-e784d8324c6e"
+
+  // P!INK
+  // "1442d8a1-b26c-426d-aa1c-d633aead4398"
+
+  // Robbie Williams
+  // "7fab0a39-049a-47e2-ba1d-ac7eb932c660"
 }
 
 main()

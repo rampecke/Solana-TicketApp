@@ -89,6 +89,7 @@ public struct CollectableDto: Decodable {
     public var imageUrl: String
     public var collectionId: String
     public var nftAddress: String
+    public var claimedByAddress: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -96,6 +97,7 @@ public struct CollectableDto: Decodable {
         case imageUrl
         case collectionId
         case nftAddress
+        case claimedByAddress
     }
     
     public init(from decoder: Decoder) throws {
@@ -105,5 +107,20 @@ public struct CollectableDto: Decodable {
         imageUrl = try container.decode(String.self, forKey: .imageUrl)
         collectionId = try container.decode(String.self, forKey: .collectionId)
         nftAddress = try container.decode(String.self, forKey: .nftAddress)
+        claimedByAddress = try? container.decodeIfPresent(String.self, forKey: .claimedByAddress)
+    }
+}
+
+public struct CollectionDto: Decodable {
+    public var id: String
+    public var name: String
+    public var eventId: String
+    public var collectables: [CollectableDto]
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case eventId
+        case collectables
     }
 }

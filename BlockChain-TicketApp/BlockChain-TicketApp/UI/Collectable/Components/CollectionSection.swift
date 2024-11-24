@@ -21,7 +21,7 @@ struct CollectionSection: View {
     var body: some View {
         VStack {
             HStack{
-                Text(collection.titel)
+                Text(collection.title)
                     .font(.headline)
             }.frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)

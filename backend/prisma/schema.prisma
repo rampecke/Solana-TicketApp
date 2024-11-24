@@ -45,13 +45,13 @@ model Ticket {
 }
 
 model Collectable {
-  id           String     @id @default(uuid())
-  name         String
-  imageUrl     String
-  collectionId String
-  nftAddress   String     @unique
-  claimed      Boolean    @default(false)
-  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  id               String     @id @default(uuid())
+  name             String
+  imageUrl         String
+  collectionId     String
+  nftAddress       String     @unique
+  claimedByAddress String?
+  collection       Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
 }
 
 model Collection {

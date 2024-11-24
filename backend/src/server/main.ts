@@ -154,6 +154,16 @@ app.post("/tickets/:id/claim", async (req, res) => {
   res.send(updatedCollectable);
 });
 
+app.get("/collections", async (_, res) => {
+  const collectables = await prisma.collection.findMany({
+    include: {
+      collectables: true,
+    },
+  });
+
+  res.send(collectables);
+});
+
 app.use(function (err: any, req: any, res: any, next: any) {
   console.error(err.stack);
 

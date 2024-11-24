@@ -13,10 +13,13 @@ struct CollectableCard: View {
     var body: some View {
         VStack {
             // Square Image
-            Image("ExampleNFT") //TODO: Use NFT Url
-                .resizable()
-                .scaledToFit()
-                .frame(width: 350, height: 350)
+            AsyncImage(url: URL(string: collectable.imageUrl)) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                Color.gray.frame(width: 350, height: 350)
+            }.frame(width: 350, height: 350)
                 .clipShape(Rectangle())
                 .cornerRadius(15)
 
@@ -72,11 +75,14 @@ struct CollectableCardSmall: View {
     
     var body: some View {
         VStack {
-            // Your Collectable Card View
-            Image("ExampleNFT")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 150, height: 150)
+            // Your Collectable Card View            
+            AsyncImage(url: URL(string: collectable.imageUrl)) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                Color.gray.frame(width: 150, height: 150)
+            }.frame(width: 150, height: 150)
                 .clipShape(Rectangle())
                 .cornerRadius(10)
                 .opacity(collectable.ownedByMe ? 1 : 0.4)

@@ -32,17 +32,20 @@ class Collectable: Identifiable {
 
 // Extension in OrganizationEvent.swift
 extension Collectable {
-    static func convertFromDtos(collectableDtos: [CollectableDto]) -> [Collectable] {
+    static func convertFromDtos(collectableDtos: [CollectableDto], myAddress: String) -> [Collectable] {
         return collectableDtos.compactMap { dto in
+            let maxNumber = Int.random(in: 1...10)
+            let numberInCollection = Int.random(in: 1...maxNumber)
+            
             return Collectable(
                 uuid: UUID(uuidString: dto.id)!,
                 title: dto.name,
                 collection: nil,
                 imageUrl: dto.imageUrl,
-                price: 0,
-                numberInCollection: nil,
-                totalNumberInCollection: nil,
-                ownedByMe: true
+                price: Double.random(in: 0.5...4),
+                numberInCollection: numberInCollection,
+                totalNumberInCollection: maxNumber,
+                ownedByMe: dto.claimedByAddress == myAddress
             )
         }
     }
