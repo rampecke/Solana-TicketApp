@@ -124,16 +124,20 @@ async function main() {
   // });
 
   // Ed Sheeran
-  // "fead9cdf-c28a-460d-a994-402538d22423"
+  // event "fead9cdf-c28a-460d-a994-402538d22423"
+  // collection "1af751c1-4c83-4eb3-88b7-504203720b52"
 
   // Macklemore
-  // "691c24c9-e42f-4202-ac97-e784d8324c6e"
+  // event "691c24c9-e42f-4202-ac97-e784d8324c6e"
+  // collection "05ba0525-87a8-40d3-beb6-530165f9f5aa"
 
   // P!INK
-  // "1442d8a1-b26c-426d-aa1c-d633aead4398"
+  // event "1442d8a1-b26c-426d-aa1c-d633aead4398"
+  // collection "f69baee1-3c6f-4d59-a501-cc6265a5fd5a"
 
   // Robbie Williams
-  // "7fab0a39-049a-47e2-ba1d-ac7eb932c660"
+  // event "7fab0a39-049a-47e2-ba1d-ac7eb932c660"
+  // collection "d89c9055-38c9-451a-b4e8-0f3faf5b9bc9"
 }
 
 main()

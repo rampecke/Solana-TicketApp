@@ -63,7 +63,7 @@ class OrganizationEvent {
 public enum EventCategoryType: String, CaseIterable, Codable {
     case Music = "Music"
     case Sports = "Sports"
-    case ArtsTheatre = "Art & Theatre"
+    case ArtsTheatre = "ArtsTheatre"
     case Conference = "Conference"
     case Fair = "Fair"
     case Other = "Other"
