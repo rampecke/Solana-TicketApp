@@ -59,5 +59,5 @@ struct EventSection: View {
 }
 
 #Preview {
-    EventSection(sectionName: "Popular Events", sortOption: SortOptions.Popular).environment(MockModel() as Model)
+    EventSection(sectionName: "Popular Events", sortOption: SortOptions.Popular).environment(PreviewModel() as Model)
 }

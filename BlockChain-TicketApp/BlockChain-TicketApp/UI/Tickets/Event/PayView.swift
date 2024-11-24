@@ -138,5 +138,5 @@ struct PayView: View {
 }
 
 #Preview {
-    PayView(event: MockModel().getExampleTicket().organizationEvent)
+    PayView(event: PreviewModel().getExampleTicket().organizationEvent)
 }

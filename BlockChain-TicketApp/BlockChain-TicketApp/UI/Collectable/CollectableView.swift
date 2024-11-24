@@ -25,5 +25,5 @@ struct CollectableView: View {
 }
 
 #Preview {
-    CollectableView().environment(MockModel() as Model)
+    CollectableView().environment(PreviewModel() as Model)
 }

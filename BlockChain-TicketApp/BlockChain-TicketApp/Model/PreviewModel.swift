@@ -1,5 +1,5 @@
 //
-//  MockModel.swift
+//  PreviewModel.swift
 //  BlockChain-TicketApp
 //
 //  Created by Ramona Eckert on 23.11.24.
@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-class MockModel: Model {
+class PreviewModel: Model {
     override init() {
         super.init()
         

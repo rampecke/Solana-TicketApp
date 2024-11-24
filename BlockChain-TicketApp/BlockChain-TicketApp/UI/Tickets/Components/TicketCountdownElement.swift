@@ -72,6 +72,6 @@ struct TicketCountdownElement: View {
 }
 
 #Preview {
-    let model = MockModel()
+    let model = PreviewModel()
     return TicketCountdownElement(ticket: model.getExampleTicket())
 }

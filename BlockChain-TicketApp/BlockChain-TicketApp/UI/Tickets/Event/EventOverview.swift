@@ -65,5 +65,5 @@ struct EventOverview: View {
 }
 
 #Preview {
-    EventOverview(organizationEvent: MockModel().getExampleTicket().organizationEvent)
+    EventOverview(organizationEvent: PreviewModel().getExampleTicket().organizationEvent)
 }

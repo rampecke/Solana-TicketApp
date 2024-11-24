@@ -108,6 +108,6 @@ struct TicketOverview: View {
 
 
 #Preview {
-    let model = MockModel()
+    let model = PreviewModel()
     return TicketOverview(ticket: model.getExampleTicket()).environment(model as Model)
 }

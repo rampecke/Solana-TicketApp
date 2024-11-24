@@ -30,7 +30,7 @@ struct TicketHeader: View {
 }
 
 #Preview {
-    let model = MockModel()
+    let model = PreviewModel()
     
     return TicketHeader(organizationEvent: model.getExampleTicket().organizationEvent)
 }
