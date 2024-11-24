@@ -29,7 +29,6 @@ model Event {
   collection Collection?
 
   tickets Ticket[]
-  priceCategories PriceCategory[]
 }
 
 model Ticket {
@@ -41,18 +40,9 @@ model Ticket {
   seatingBlock String
   seatingRow String
   seatinSeat String
+  priceCategory Int
 
   event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  priceCategory PriceCategory @relation(fields: [priceCategoryId], references: [id], onDelete: Cascade)
-}
-
-model PriceCategory {
-  id      String @id @default(uuid())
-  name    String
-  price Int
-  eventId String
-  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  tickets Ticket[]
 }
 
 model Collectable {

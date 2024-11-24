@@ -12,7 +12,6 @@ app.get("/", (_, res) => {
 app.get("/events", async (_, res) => {
   const events = await prisma.event.findMany({
     include: {
-      priceCategories: true,
       collection: {
         include: {
           collectables: true,
