@@ -151,7 +151,7 @@ app.post("/tickets/:id/claim", async (req, res) => {
   try {
     // Send the NFT to the buyer
     console.log("Would get nft", updatedCollectable.nftAddress, walletAddress);
-    // await sendNFT(updatedCollectable.nftAddress, walletAddress);
+    await sendNFT(updatedCollectable.nftAddress, walletAddress);
   } catch {
     console.error("Failed to send NFT to the buyer");
   }
