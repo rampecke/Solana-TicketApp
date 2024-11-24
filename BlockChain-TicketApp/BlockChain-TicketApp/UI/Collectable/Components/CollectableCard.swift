@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CollectableCard: View {
     var collectable: Collectable
@@ -13,16 +14,13 @@ struct CollectableCard: View {
     var body: some View {
         VStack {
             // Square Image
-            AsyncImage(url: URL(string: collectable.imageUrl)) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                Color.gray.frame(width: 350, height: 350)
-            }.frame(width: 350, height: 350)
+            KFImage(URL(string: collectable.imageUrl))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 350, height: 350)
                 .clipShape(Rectangle())
                 .cornerRadius(15)
-
+            
             // Optional Text or Content Below
             VStack {
                 HStack {
@@ -75,14 +73,10 @@ struct CollectableCardSmall: View {
     
     var body: some View {
         VStack {
-            // Your Collectable Card View            
-            AsyncImage(url: URL(string: collectable.imageUrl)) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                Color.gray.frame(width: 150, height: 150)
-            }.frame(width: 150, height: 150)
+            KFImage(URL(string: collectable.imageUrl))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, height: 150)
                 .clipShape(Rectangle())
                 .cornerRadius(10)
                 .opacity(collectable.ownedByMe ? 1 : 0.4)

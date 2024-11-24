@@ -6,19 +6,17 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct EventCard: View {
     @Bindable var organizationEvent: OrganizationEvent
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            AsyncImage(url: URL(string: organizationEvent.imageUrl)) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                Color.gray
-            }.frame(width: 150, height: 150)
+            KFImage(URL(string: organizationEvent.imageUrl))
+                .resizable()
+                .scaledToFill()
+                .frame(width: 150, height: 150)
                 .clipped()
                 .cornerRadius(15)
             

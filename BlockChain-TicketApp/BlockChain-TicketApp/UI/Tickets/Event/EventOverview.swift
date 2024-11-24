@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct EventOverview: View {
     @Bindable var organizationEvent: OrganizationEvent
@@ -16,14 +17,11 @@ struct EventOverview: View {
         ScrollView {
             VStack(spacing:10) {
                 ZStack(alignment: .bottom) {
-                    AsyncImage(url: URL(string: organizationEvent.imageUrl)) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .aspectRatio(contentMode: .fill)
-                    } placeholder: {
-                        Color.gray.frame(width: .infinity, height: 300)
-                    }.frame(maxWidth: .infinity, maxHeight: 300, alignment: .topLeading)
+                    KFImage(URL(string: organizationEvent.imageUrl))
+                        .resizable()
+                        .scaledToFill()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(maxWidth: .infinity, maxHeight: 300, alignment: .topLeading)
                         .clipped()
                         .cornerRadius(15)
                     

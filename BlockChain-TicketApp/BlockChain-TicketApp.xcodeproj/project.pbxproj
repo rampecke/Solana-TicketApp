@@ -49,6 +49,7 @@
 		F4D8DA192CF1F70A0032C526 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA182CF1F70A0032C526 /* SolanaSwift */; };
 		F4D8DA1C2CF210F70032C526 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA1B2CF210F70032C526 /* SolanaSwift */; };
 		F4E0F8372CF2DA5D003B834D /* ApiDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E0F8362CF2DA5A003B834D /* ApiDto.swift */; };
+		F4E0F84C2CF31759003B834D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F4E0F84B2CF31759003B834D /* Kingfisher */; };
 		F4E863072CF1DC55006382DF /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E863062CF1DC55006382DF /* SolanaSwift */; };
 		F4E8630F2CF1F688006382DF /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E8630E2CF1F688006382DF /* SolanaSwift */; };
 		F4E863112CF1F698006382DF /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E863102CF1F698006382DF /* SolanaSwift */; };
@@ -111,6 +112,7 @@
 				F4D8DA192CF1F70A0032C526 /* SolanaSwift in Frameworks */,
 				F4ADFCE82CF2567C002094E9 /* SolanaSwift in Frameworks */,
 				F4D8DA172CF1F6F50032C526 /* Web3Auth in Frameworks */,
+				F4E0F84C2CF31759003B834D /* Kingfisher in Frameworks */,
 				F4ADFCDD2CF21CFE002094E9 /* SolanaSwift in Frameworks */,
 				F4E863112CF1F698006382DF /* SolanaSwift in Frameworks */,
 			);
@@ -334,6 +336,7 @@
 			packageReferences = (
 				F4E8630B2CF1F62F006382DF /* XCRemoteSwiftPackageReference "web3auth-swift-sdk" */,
 				F4ADFCE62CF2567C002094E9 /* XCLocalSwiftPackageReference "../solana-swift" */,
+				F4E0F84A2CF31759003B834D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = A0E8715C2CF173F20084AD88 /* Products */;
 			projectDirPath = "";
@@ -618,6 +621,14 @@
 				kind = branch;
 			};
 		};
+		F4E0F84A2CF31759003B834D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
+			};
+		};
 		F4E863052CF1DC55006382DF /* XCRemoteSwiftPackageReference "solana-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/p2p-org/solana-swift";
@@ -667,6 +678,11 @@
 		F4D8DA1B2CF210F70032C526 /* SolanaSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SolanaSwift;
+		};
+		F4E0F84B2CF31759003B834D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E0F84A2CF31759003B834D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		F4E863062CF1DC55006382DF /* SolanaSwift */ = {
 			isa = XCSwiftPackageProductDependency;

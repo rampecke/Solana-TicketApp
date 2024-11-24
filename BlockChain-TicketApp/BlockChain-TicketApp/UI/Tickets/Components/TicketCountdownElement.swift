@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct TicketCountdownElement: View {
     @Bindable var ticket: Ticket
@@ -44,15 +45,11 @@ struct TicketCountdownElement: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            
-            AsyncImage(url: URL(string: ticket.organizationEvent.imageUrl)) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .aspectRatio(contentMode: .fill)
-            } placeholder: {
-                Color.gray.frame(width: .infinity, height: 250)
-            }.frame(maxWidth: .infinity, maxHeight: 250, alignment: .topLeading)
+            KFImage(URL(string: ticket.organizationEvent.imageUrl))
+                .resizable()
+                .scaledToFill()
+                .aspectRatio(contentMode: .fill)
+                .frame(maxWidth: .infinity, maxHeight: 250, alignment: .topLeading)
                 .clipped()
                 .cornerRadius(15)
                 .opacity(opacity) // Apply opacity based on event status
