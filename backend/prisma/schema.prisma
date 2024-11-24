@@ -17,6 +17,7 @@ datasource db {
 model Event {
   id      String   @id @default(uuid())
   eventName String
+  eventDescription String?
   startTime DateTime
   endTime DateTime
   imageUrl String
@@ -41,8 +42,8 @@ model Ticket {
   seatingRow String
   seatinSeat String
 
-  event Event @relation(fields: [eventId], references: [id])
-  priceCategory PriceCategory @relation(fields: [priceCategoryId], references: [id])
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  priceCategory PriceCategory @relation(fields: [priceCategoryId], references: [id], onDelete: Cascade)
 }
 
 model PriceCategory {
@@ -50,7 +51,7 @@ model PriceCategory {
   name    String
   price Int
   eventId String
-  event Event @relation(fields: [eventId], references: [id])
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
   tickets Ticket[]
 }
 
@@ -61,7 +62,7 @@ model Collectable {
   collectionId String
   nftAddress String @unique
   claimed Boolean @default(false)
-  collection Collection @relation(fields: [collectionId], references: [id])
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
 }
 
 model Collection {
@@ -69,7 +70,7 @@ model Collection {
   name String
   eventId String @unique
   collectables Collectable[]
-  event Event @relation(fields: [eventId], references: [id])
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
 }
 
 enum EventCategory {
