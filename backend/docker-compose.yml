@@ -40,10 +40,7 @@ services:
       - "443:443"    # HTTPS
     command:
       - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.lets-encrypt.acme.tlschallenge=true"
       - "--certificatesresolvers.lets-encrypt.acme.email=devstar0711@gcplab.me" # Replace with your email
