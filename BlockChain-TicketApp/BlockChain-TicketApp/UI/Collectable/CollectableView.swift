@@ -13,7 +13,7 @@ struct CollectableView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 10) {
                 ForEach(model.collections) { collection in
                     CollectionSection(collection: collection)
                 }

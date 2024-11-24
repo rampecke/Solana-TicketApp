@@ -50,8 +50,11 @@ struct EventSection: View {
                         EventCard(organizationEvent: event)
                     }
                 }
-            }.padding(.horizontal)
-        }
+            }
+        }.padding()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(15)
+            .padding(.horizontal)
     }
 }
 
