@@ -15,10 +15,10 @@ struct CollectableCard: View {
             // Square Image
             Image("ExampleNFT") //TODO: Use NFT Url
                 .resizable()
-                .scaledToFit() // Keep image aspect ratio
-                .frame(width: 350, height: 350) // Set fixed size for the square
-                .clipShape(Rectangle()) // Optional: Change shape if needed
-                .cornerRadius(10) // Optional: Rounded corners
+                .scaledToFit()
+                .frame(width: 350, height: 350)
+                .clipShape(Rectangle())
+                .cornerRadius(15)
 
             // Optional Text or Content Below
             HStack {

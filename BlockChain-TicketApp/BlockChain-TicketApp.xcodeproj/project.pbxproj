@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A089057A2CF2B8D000107F8A /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08905792CF2B8D000107F8A /* PayView.swift */; };
 		A0B14D2C2CF2A1CF0003843B /* CollectableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B14D2B2CF2A1CF0003843B /* CollectableCard.swift */; };
 		A0E8715F2CF173F20084AD88 /* BlockChain_TicketAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8715E2CF173F20084AD88 /* BlockChain_TicketAppApp.swift */; };
 		A0E871612CF173F20084AD88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871602CF173F20084AD88 /* ContentView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A08905792CF2B8D000107F8A /* PayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
 		A0B14D2B2CF2A1CF0003843B /* CollectableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableCard.swift; sourceTree = "<group>"; };
 		A0E8715B2CF173F20084AD88 /* BlockChain-TicketApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlockChain-TicketApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E8715E2CF173F20084AD88 /* BlockChain_TicketAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockChain_TicketAppApp.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E871A32CF27B4E0084AD88 /* EventOverview.swift */,
+				A08905792CF2B8D000107F8A /* PayView.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				A0B14D2C2CF2A1CF0003843B /* CollectableCard.swift in Sources */,
 				A0E871882CF211BF0084AD88 /* HomeView.swift in Sources */,
 				A0E871912CF242BD0084AD88 /* TicketList.swift in Sources */,
+				A089057A2CF2B8D000107F8A /* PayView.swift in Sources */,
 				A0E8718D2CF21DDB0084AD88 /* EventSection.swift in Sources */,
 				A0E871822CF1E1130084AD88 /* TicketHeaderElement.swift in Sources */,
 				A0E871732CF1771E0084AD88 /* Ticket.swift in Sources */,
