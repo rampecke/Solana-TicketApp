@@ -125,7 +125,7 @@ app.post("/tickets/:id/claim", async (req, res) => {
         collection: {
           eventId: ticket.eventId,
         },
-        claimed: false,
+        claimedByAddress: null,
       },
     });
 
@@ -141,15 +141,20 @@ app.post("/tickets/:id/claim", async (req, res) => {
         id: randomCollectable.id,
       },
       data: {
-        claimed: true,
+        claimedByAddress: walletAddress,
       },
     });
 
-    // Send the NFT to the buyer
-    await sendNFT(randomCollectable.nftAddress, walletAddress);
-
     return [updatedTicket, updatedCollectable];
   });
+
+  try {
+    // Send the NFT to the buyer
+    console.log("Would get nft", updatedCollectable.nftAddress, walletAddress);
+    // await sendNFT(updatedCollectable.nftAddress, walletAddress);
+  } catch {
+    console.error("Failed to send NFT to the buyer");
+  }
 
   res.send(updatedCollectable);
 });
