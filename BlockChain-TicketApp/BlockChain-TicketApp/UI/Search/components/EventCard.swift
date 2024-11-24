@@ -21,6 +21,7 @@ struct EventCard: View {
             Text(organizationEvent.eventName)
                 .font(.headline)
                 .fontWeight(.bold)
+                .foregroundColor(.primary)
                 .multilineTextAlignment(.leading)
                 .lineLimit(3)
                 .truncationMode(.tail)

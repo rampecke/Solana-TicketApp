@@ -11,6 +11,8 @@ struct HomeView: View {
     @State var searchText: String = ""
     @State private var isEditing = false // State to track if the user is editing
     
+    @Environment(Model.self) var model: Model
+    
     func selectSortOption(eventType: EventCategoryType) -> SortOptions {
         switch eventType {
         case .Music:
@@ -29,15 +31,26 @@ struct HomeView: View {
     }
     
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading) {
-                EventSection(sectionName: "Popular Events", sortOption: SortOptions.Popular)
-                EventSection(sectionName: "Nearby Event", sortOption: SortOptions.CloseBy)
-                ForEach(EventCategoryType.allCases, id: \.self) { category in
-                    EventSection(sectionName: category.rawValue, sortOption: selectSortOption(eventType: category))
+        NavigationStack {
+            ScrollView{
+                VStack(alignment: .leading) {
+                    if !model.myTickets.isEmpty {
+                        HStack{
+                            Text("Your next Event is coming")
+                                .font(.headline)
+                            Spacer()
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        TicketCountdownElement(ticket: model.returnClosestTicket() ?? MockModel().getExampleTicket()).padding(.bottom, 10).padding(.horizontal)
+                    }
+                    EventSection(sectionName: "Popular Events", sortOption: SortOptions.Popular)
+                    EventSection(sectionName: "Nearby Event", sortOption: SortOptions.CloseBy)
+                    ForEach(EventCategoryType.allCases, id: \.self) { category in
+                        EventSection(sectionName: category.rawValue, sortOption: selectSortOption(eventType: category))
+                    }
                 }
             }
-        }
+        }.searchable(text: $searchText)
     }
 }
 

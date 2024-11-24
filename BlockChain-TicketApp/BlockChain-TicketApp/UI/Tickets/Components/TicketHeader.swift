@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct TicketHeader: View {
-    @Bindable var ticket: Ticket
+    @Bindable var organizationEvent: OrganizationEvent
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(ticket.organizationEvent.eventName)
+            Text(organizationEvent.eventName)
                 .font(.headline)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack{
-                TicketHeaderElement(sfSymbolName: "calendar", elementText: ticket.organizationEvent.formatDayString(date: ticket.organizationEvent.startTime))
-                TicketHeaderElement(sfSymbolName: "clock", elementText: ticket.organizationEvent.formatTime(date: ticket.organizationEvent.startTime))
+                TicketHeaderElement(sfSymbolName: "calendar", elementText: organizationEvent.formatDayString(date: organizationEvent.startTime))
+                TicketHeaderElement(sfSymbolName: "clock", elementText: organizationEvent.formatTime(date: organizationEvent.startTime))
             }.frame(maxWidth: .infinity, alignment: .leading)
         }.padding(10)
         .background(
@@ -32,5 +32,5 @@ struct TicketHeader: View {
 #Preview {
     let model = MockModel()
     
-    return TicketHeader(ticket: model.getExampleTicket())
+    return TicketHeader(organizationEvent: model.getExampleTicket().organizationEvent)
 }

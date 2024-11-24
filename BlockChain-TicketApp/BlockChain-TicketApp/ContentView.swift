@@ -22,6 +22,12 @@ struct ContentView: View {
                 .tabItem {
                     Label("Tickets", systemImage: "ticket")
                 }
+            
+            CollectableOverview()
+                .tabItem {
+                    Label("Collection", systemImage: "folder")
+                }
+            
         }
     }
 }
