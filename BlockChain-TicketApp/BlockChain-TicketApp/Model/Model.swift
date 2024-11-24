@@ -19,7 +19,7 @@ class Model {
     var collections: [CollectionNFT] = []
     var myCollectables: [Collectable] = []
     
-    let apiEndpint: String = "https://agricultural-ranking-study-asks.trycloudflare.com"
+    let apiEndpint: String = "https://chat-29.localcan.dev"
     
     func returnListSorted(sortOption: SortOptions) -> [OrganizationEvent] {
         switch sortOption {
