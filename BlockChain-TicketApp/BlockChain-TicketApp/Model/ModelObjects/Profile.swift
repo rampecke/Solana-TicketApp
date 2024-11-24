@@ -16,6 +16,11 @@ class Profile {
     
     var signedIn: Bool = false
     
+    init(name: String? = nil, profilePictureUrl: String? = nil) {
+        self.name = name
+        self.profilePictureUrl = profilePictureUrl
+    }
+    
     func getPublicKey() -> String {
         keypair?.publicKey.base58EncodedString ?? ""
     }

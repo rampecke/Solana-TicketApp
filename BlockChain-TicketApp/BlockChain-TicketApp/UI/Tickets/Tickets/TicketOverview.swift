@@ -7,20 +7,24 @@
 
 import SwiftUI
 import MapKit
-
 struct TicketOverview: View {
     @Bindable var ticket: Ticket
     
-    //Open and close sheet for Ticket
+    // Open and close sheet for Ticket
     @State var ticketOpen: Bool = false
     
     init(ticket: Ticket) {
         self.ticket = ticket
     }
     
+    var isEventOver: Bool {
+        // Check if the event's end time is in the past
+        return ticket.organizationEvent.endTime < Date()
+    }
+    
     var body: some View {
         ScrollView {
-            VStack(spacing:10) {
+            VStack(spacing: 10) {
                 ZStack(alignment: .bottom) {
                     
                     AsyncImage(url: URL(string: ticket.organizationEvent.imageUrl)) { image in
@@ -39,28 +43,49 @@ struct TicketOverview: View {
                         .padding(.horizontal, 20)
                 }.padding(.horizontal)
                 
-                Button(action: {
-                    ticketOpen.toggle()
-                }) {
-                    HStack {
-                        Image(systemName: "qrcode")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                        
-                        Text("Show QR Code")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                    }.foregroundColor(Color("onAccentColor"))
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color("accentColor"))
-                    .cornerRadius(15)
-                    .padding(.horizontal)
+                if isEventOver {
+                    Button(action: {
+                        //TODO: Receive a NFT
+                    }) {
+                        HStack {
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                            
+                            Text("Collect Collectable")
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                        }.foregroundColor(Color("onAccentColor"))
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color("accentColor"))
+                            .cornerRadius(15)
+                            .padding(.horizontal)
+                    }
+                } else {
+                    Button(action: {
+                        ticketOpen.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "qrcode")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                            
+                            Text("Show QR Code")
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                        }.foregroundColor(Color("onAccentColor"))
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color("accentColor"))
+                            .cornerRadius(15)
+                            .padding(.horizontal)
+                    }
                 }
                 
                 AboutComponent(organizationEvent: ticket.organizationEvent)
-                
                 MapComponent(organizationEvent: ticket.organizationEvent)
             }.padding(.top, 10)
         }.sheet(isPresented: $ticketOpen, content: {
@@ -70,6 +95,7 @@ struct TicketOverview: View {
         })
     }
 }
+
 
 #Preview {
     let model = MockModel()

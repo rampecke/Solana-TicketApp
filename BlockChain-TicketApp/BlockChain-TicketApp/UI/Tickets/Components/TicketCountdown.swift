@@ -21,7 +21,7 @@ struct TicketCountdown: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack{
                 Text(remaningTime)
-                    .font(.subheadline)
+                    .font(.headline)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }.frame(maxWidth: .infinity, alignment: .leading)

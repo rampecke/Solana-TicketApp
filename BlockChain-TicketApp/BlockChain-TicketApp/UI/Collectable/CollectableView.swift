@@ -12,10 +12,12 @@ struct CollectableView: View {
     @State private var showMoreTrue: Bool = false
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                ForEach(model.collections) { collection in
-                    CollectionSection(collection: collection)
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 10) {
+                    ForEach(model.collections) { collection in
+                        CollectionSection(collection: collection)
+                    }
                 }
             }
         }
