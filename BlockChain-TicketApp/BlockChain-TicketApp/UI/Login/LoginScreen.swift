@@ -29,15 +29,8 @@ struct LoginScreen: View {
             // Google login button
             Button(action: {
                 Task {
-                    
                     do {
-                        let auth = try await model.solana.auth()
-                        
-                        model.profile.name = auth.name
-                        model.profile.profilePictureUrl = auth.profileImage
-                        model.profile.keypair = auth.key
-                        
-                        model.profile.signedIn = true
+                        try await model.authenticate()
                     } catch {
                         print("Failed to create account: \(error.localizedDescription)")
                         print(error)

@@ -33,10 +33,15 @@ struct TicketCountdownElement: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Image("ExamplePicture") // TODO: Replace with my image name
-                .resizable()
-                .scaledToFill()
-                .frame(maxWidth: .infinity, maxHeight: 250, alignment: .topLeading)
+            
+            AsyncImage(url: URL(string: ticket.organizationEvent.imageUrl)) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .aspectRatio(contentMode: .fill)
+            } placeholder: {
+                Color.gray.frame(width: .infinity, height: 250)
+            }.frame(maxWidth: .infinity, maxHeight: 250, alignment: .topLeading)
                 .clipped()
                 .cornerRadius(15)
             

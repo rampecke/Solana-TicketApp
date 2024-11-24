@@ -15,4 +15,8 @@ class Profile {
     var keypair: KeyPair?
     
     var signedIn: Bool = false
+    
+    func getPublicKey() -> String {
+        keypair?.publicKey.base58EncodedString ?? ""
+    }
 }

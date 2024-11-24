@@ -60,11 +60,41 @@ class OrganizationEvent {
     }
 }
 
-enum EventCategoryType: String, CaseIterable {
+public enum EventCategoryType: String, CaseIterable, Codable {
     case Music = "Music"
-    case Sports = "Sport"
+    case Sports = "Sports"
     case ArtsTheatre = "Art & Theatre"
     case Conference = "Conference"
     case Fair = "Fair"
     case Other = "Other"
+}
+
+// Extension in OrganizationEvent.swift
+extension OrganizationEvent {
+    static func convertFromDtos(eventDtos: [EventDto]) -> [OrganizationEvent] {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        return eventDtos.compactMap { dto in
+            guard let startDate = dateFormatter.date(from: dto.startTime),
+                  let endDate = dateFormatter.date(from: dto.endTime) else {
+                return nil
+            }
+            
+            return OrganizationEvent(
+                eventId: UUID(uuidString: dto.id)!,
+                popularityScore: 0.0, // Default value, update as needed
+                startTime: startDate,
+                endTime: endDate,
+                location: CLLocationCoordinate2D(latitude: CLLocationDegrees(dto.locationLatitude),
+                                                 longitude: CLLocationDegrees(dto.locationLongitude)),
+                nameLocation: dto.nameLocation,
+                eventDescription: dto.eventDescription,
+                eventCategory: dto.eventCategory,
+                eventName: dto.eventName,
+                organizerName: dto.organizerName,
+                imageUrl: dto.imageUrl
+            )
+        }
+    }
 }

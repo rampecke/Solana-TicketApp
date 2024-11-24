@@ -47,6 +47,7 @@
 		F4D8DA172CF1F6F50032C526 /* Web3Auth in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA162CF1F6F50032C526 /* Web3Auth */; };
 		F4D8DA192CF1F70A0032C526 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA182CF1F70A0032C526 /* SolanaSwift */; };
 		F4D8DA1C2CF210F70032C526 /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4D8DA1B2CF210F70032C526 /* SolanaSwift */; };
+		F4E0F8372CF2DA5D003B834D /* ApiDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E0F8362CF2DA5A003B834D /* ApiDto.swift */; };
 		F4E863072CF1DC55006382DF /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E863062CF1DC55006382DF /* SolanaSwift */; };
 		F4E8630F2CF1F688006382DF /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E8630E2CF1F688006382DF /* SolanaSwift */; };
 		F4E863112CF1F698006382DF /* SolanaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E863102CF1F698006382DF /* SolanaSwift */; };
@@ -87,9 +88,11 @@
 		A0E871A82CF2934D0084AD88 /* Collectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectable.swift; sourceTree = "<group>"; };
 		A0E871AA2CF294DF0084AD88 /* CollectionNFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionNFT.swift; sourceTree = "<group>"; };
 		A0E871AC2CF296A60084AD88 /* AnimatedBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBanner.swift; sourceTree = "<group>"; };
+		F4E0F8362CF2DA5A003B834D /* ApiDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F4E0F8352CF2D99F003B834D /* Api */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Api; sourceTree = "<group>"; };
 		F4E862FF2CF1D148006382DF /* Solana */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Solana; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -184,6 +187,7 @@
 		A0E871702CF176AD0084AD88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F4E0F8352CF2D99F003B834D /* Api */,
 				F4E862FF2CF1D148006382DF /* Solana */,
 				A0E871712CF176BF0084AD88 /* ModelObjects */,
 				A0E871742CF17AE80084AD88 /* Model.swift */,
@@ -195,6 +199,7 @@
 		A0E871712CF176BF0084AD88 /* ModelObjects */ = {
 			isa = PBXGroup;
 			children = (
+				F4E0F8362CF2DA5A003B834D /* ApiDto.swift */,
 				A0E871722CF1771E0084AD88 /* Ticket.swift */,
 				A0E871762CF17C340084AD88 /* Seating.swift */,
 				A0E871892CF21B260084AD88 /* OrganizationEvent.swift */,
@@ -291,6 +296,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				F4E0F8352CF2D99F003B834D /* Api */,
 				F4E862FF2CF1D148006382DF /* Solana */,
 			);
 			name = "BlockChain-TicketApp";
@@ -362,6 +368,7 @@
 				A089057C2CF2C52600107F8A /* CollectableView.swift in Sources */,
 				A0E871802CF1DF740084AD88 /* TicketHeader.swift in Sources */,
 				A0E871942CF24DD00084AD88 /* LoginScreen.swift in Sources */,
+				F4E0F8372CF2DA5D003B834D /* ApiDto.swift in Sources */,
 				A0E871962CF257CD0084AD88 /* Profile.swift in Sources */,
 				A0E8717C2CF1849F0084AD88 /* SeatingElement.swift in Sources */,
 				A0E871612CF173F20084AD88 /* ContentView.swift in Sources */,

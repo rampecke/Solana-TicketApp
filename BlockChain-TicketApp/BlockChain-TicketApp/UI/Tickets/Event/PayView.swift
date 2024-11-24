@@ -10,6 +10,7 @@ import SwiftUI
 struct PayView: View {
     @Environment(\.presentationMode) var presentationMode
     @Bindable var event: OrganizationEvent
+    @Environment(Model.self) var model: Model
     
     @State private var selectedSeats: [String: Int] = [
         "Category-1": 0,
@@ -104,11 +105,17 @@ struct PayView: View {
                 .padding(.horizontal)
             
             Button(action: {
-                //TODO: Call Backendcall
-                presentationMode.wrappedValue.dismiss()
+                Task {
+                    do {
+                        try await model.buyTicket(event: self.event)
+                        presentationMode.wrappedValue.dismiss()
+                    } catch {
+                        print("Failed to buy ticket: \(error.localizedDescription)")
+                        print(error)
+                    }
+                }
             }) {
                 HStack {
-                    
                     Text("Buy with")
                         .font(.subheadline)
                         .fontWeight(.bold)

@@ -16,10 +16,14 @@ struct EventOverview: View {
         ScrollView {
             VStack(spacing:10) {
                 ZStack(alignment: .bottom) {
-                    Image("ExamplePicture") // TODO: Replace with my image name
-                        .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: 300, alignment: .topLeading)
+                    AsyncImage(url: URL(string: organizationEvent.imageUrl)) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .aspectRatio(contentMode: .fill)
+                    } placeholder: {
+                        Color.gray.frame(width: .infinity, height: 300)
+                    }.frame(maxWidth: .infinity, maxHeight: 300, alignment: .topLeading)
                         .clipped()
                         .cornerRadius(15)
                     

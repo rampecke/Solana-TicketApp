@@ -23,4 +23,31 @@ class Ticket: Identifiable {
         self.orderId = orderId
         self.organizationEvent = organisationEvent
     }
+    
+    
+}
+
+// Extension in OrganizationEvent.swift
+extension Ticket {
+    static func convertFromDtos(ticketDtos: [TicketDto], events: [OrganizationEvent]) -> [Ticket] {
+        return ticketDtos.compactMap { dto in
+            let event = events.first(where: { $0.eventId == UUID(uuidString: dto.eventId) })
+            
+            if event == nil {
+                return nil
+            }
+            
+            return Ticket(
+                id: UUID(uuidString: dto.id)!,
+                ticketType: "Normalprice",
+                seating: Seating(
+                    block: dto.seatingBlock,
+                    row: dto.seatingRow,
+                    seat: dto.seatingSeat
+                ),
+                orderId: dto.id,
+                organisationEvent: event!
+            )
+        }
+    }
 }

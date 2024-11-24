@@ -12,12 +12,16 @@ struct EventCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Image("ExamplePicture") // TODO: Replace with my image name
-                .resizable()
-                .scaledToFill()
-                .frame(width: 150, height: 150)
+            AsyncImage(url: URL(string: organizationEvent.imageUrl)) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                Color.gray
+            }.frame(width: 150, height: 150)
                 .clipped()
                 .cornerRadius(15)
+            
             Text(organizationEvent.eventName)
                 .font(.headline)
                 .fontWeight(.bold)

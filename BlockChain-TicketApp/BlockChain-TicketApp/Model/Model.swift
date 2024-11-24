@@ -50,6 +50,64 @@ class Model {
     func collectableOwnByMe(collectable: Collectable) -> Bool {
         return true //TODO: Calculate if it is owned by me
     }
+    
+    func fetchEvents() async throws -> [OrganizationEvent] {
+        // API endpoint
+        let url = URL(string: "https://agricultural-ranking-study-asks.trycloudflare.com/events")!
+        
+        // Use URLSession's async method to fetch data
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        // Decode the JSON data
+        let events = try JSONDecoder().decode([EventDto].self, from: data)
+        
+        return OrganizationEvent.convertFromDtos(eventDtos: events)
+    }
+    
+    func fetchMyTickets() async throws -> [Ticket] {
+        let url = URL(string: "https://agricultural-ranking-study-asks.trycloudflare.com/tickets?boughtBy=" + profile.getPublicKey())!
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let tickets = try JSONDecoder().decode([TicketDto].self, from: data)
+        
+        return Ticket.convertFromDtos(ticketDtos: tickets, events: self.allEvents)
+    }
+    
+    func buyTicket(event: OrganizationEvent) async throws {
+        let url = URL(string: "https://agricultural-ranking-study-asks.trycloudflare.com/events/\(event.eventId.uuidString)/buy")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "walletAddress": profile.getPublicKey()
+        ]
+        
+        let encoded = try JSONSerialization.data(withJSONObject: parameters, options: [])
+
+        
+        let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
+        
+        let ticket = try JSONDecoder().decode(TicketDto.self, from: data)
+        
+        myTickets.append(Ticket.convertFromDtos(ticketDtos: [ticket], events: self.allEvents)[0])
+    }
+    
+    func authenticate() async throws {
+        let auth = try await solana.auth()
+        
+        profile.name = auth.name
+        profile.profilePictureUrl = auth.profileImage
+        profile.keypair = auth.key
+        
+        profile.signedIn = true
+        
+        // Fetch the events
+        allEvents = try await fetchEvents()
+        myTickets = try await fetchMyTickets()
+    }
 }
 
 enum SortOptions: CaseIterable {
