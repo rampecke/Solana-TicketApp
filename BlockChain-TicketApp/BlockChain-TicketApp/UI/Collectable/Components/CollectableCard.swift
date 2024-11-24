@@ -24,7 +24,7 @@ struct CollectableCard: View {
             VStack {
                 HStack {
                     // NFT Title
-                    Text(collectable.titel)
+                    Text(collectable.title)
                         .font(.headline)
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
@@ -81,7 +81,7 @@ struct CollectableCardSmall: View {
                 .cornerRadius(10)
                 .opacity(collectable.ownedByMe ? 1 : 0.4)
             
-            Text(collectable.titel)
+            Text(collectable.title)
                 .font(.subheadline)
                 .foregroundColor(.primary)
                 .fontWeight(.bold)

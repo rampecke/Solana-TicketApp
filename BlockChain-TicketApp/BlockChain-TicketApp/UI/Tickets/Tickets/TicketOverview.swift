@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 struct TicketOverview: View {
     @Bindable var ticket: Ticket
+    @Environment(Model.self) var model: Model
     
     // Open and close sheet for Ticket
     @State var ticketOpen: Bool = false
@@ -19,7 +20,7 @@ struct TicketOverview: View {
     
     var isEventOver: Bool {
         // Check if the event's end time is in the past
-        return ticket.organizationEvent.endTime < Date()
+        return ticket.organizationEvent.startTime < Date()
     }
     
     var body: some View {
@@ -45,7 +46,14 @@ struct TicketOverview: View {
                 
                 if isEventOver {
                     Button(action: {
-                        //TODO: Receive a NFT
+                        Task {
+                            do {
+                                try await model.claimTicket(ticket: ticket)
+                            } catch {
+                                print("Failed to claim ticket: \(error.localizedDescription)")
+                                print(error)
+                            }
+                        }
                     }) {
                         HStack {
                             Image(systemName: "star.fill")
@@ -53,7 +61,7 @@ struct TicketOverview: View {
                                 .scaledToFit()
                                 .frame(width: 20, height: 20)
                             
-                            Text("Collect Collectable")
+                            Text("Claim Collectable")
                                 .font(.subheadline)
                                 .fontWeight(.bold)
                         }.foregroundColor(Color("onAccentColor"))
@@ -86,7 +94,9 @@ struct TicketOverview: View {
                 }
                 
                 AboutComponent(organizationEvent: ticket.organizationEvent)
-                MapComponent(organizationEvent: ticket.organizationEvent)
+                if (!isEventOver) {
+                    MapComponent(organizationEvent: ticket.organizationEvent)
+                }
             }.padding(.top, 10)
         }.sheet(isPresented: $ticketOpen, content: {
             TicketView(ticket: ticket)

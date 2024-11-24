@@ -87,8 +87,10 @@ app.get("/tickets", async (req, res) => {
 });
 
 app.post("/tickets/:id/claim", async (req, res) => {
-  const id = req.params.id as string;
+  const id = (req.params.id as string)?.toLowerCase();
   const walletAddress = req.body.walletAddress as string;
+
+  console.log(id, walletAddress);
 
   const [_, updatedCollectable] = await prisma.$transaction(async (tx) => {
     const ticket = await tx.ticket.findUnique({
@@ -131,6 +133,8 @@ app.post("/tickets/:id/claim", async (req, res) => {
     const randomCollectable =
       collectables[Math.floor(Math.random() * collectables.length)];
 
+    if (!randomCollectable) throw new Error("No collectables available");
+
     // Update the collectable
     const updatedCollectable = await tx.collectable.update({
       where: {
@@ -148,6 +152,12 @@ app.post("/tickets/:id/claim", async (req, res) => {
   });
 
   res.send(updatedCollectable);
+});
+
+app.use(function (err: any, req: any, res: any, next: any) {
+  console.error(err.stack);
+
+  res.status(500).send("Something broke!");
 });
 
 ViteExpress.listen(app, 3000, () =>

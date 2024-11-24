@@ -19,6 +19,8 @@ class Model {
     var collections: [CollectionNFT] = []
     var myCollectables: [Collectable] = []
     
+    let apiEndpint: String = "https://agricultural-ranking-study-asks.trycloudflare.com"
+    
     func returnListSorted(sortOption: SortOptions) -> [OrganizationEvent] {
         switch sortOption {
         case .Popular:
@@ -53,7 +55,7 @@ class Model {
     
     func fetchEvents() async throws -> [OrganizationEvent] {
         // API endpoint
-        let url = URL(string: "https://agricultural-ranking-study-asks.trycloudflare.com/events")!
+        let url = URL(string: "\(apiEndpint)/events")!
         
         // Use URLSession's async method to fetch data
         let (data, _) = try await URLSession.shared.data(from: url)
@@ -65,7 +67,7 @@ class Model {
     }
     
     func fetchMyTickets() async throws -> [Ticket] {
-        let url = URL(string: "https://agricultural-ranking-study-asks.trycloudflare.com/tickets?boughtBy=" + profile.getPublicKey())!
+        let url = URL(string: "\(apiEndpint)/tickets?boughtBy=" + profile.getPublicKey())!
         
         let (data, _) = try await URLSession.shared.data(from: url)
         
@@ -75,7 +77,7 @@ class Model {
     }
     
     func buyTicket(event: OrganizationEvent) async throws {
-        let url = URL(string: "https://agricultural-ranking-study-asks.trycloudflare.com/events/\(event.eventId.uuidString)/buy")!
+        let url = URL(string: "\(apiEndpint)/events/\(event.eventId.uuidString)/buy")!
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -93,6 +95,27 @@ class Model {
         let ticket = try JSONDecoder().decode(TicketDto.self, from: data)
         
         myTickets.append(Ticket.convertFromDtos(ticketDtos: [ticket], events: self.allEvents)[0])
+    }
+    
+    func claimTicket(ticket: Ticket) async throws {
+        let url = URL(string: "\(apiEndpint)/tickets/\(ticket.id.uuidString)/claim")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "walletAddress": profile.getPublicKey()
+        ]
+        
+        let encoded = try JSONSerialization.data(withJSONObject: parameters, options: [])
+
+        
+        let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
+        
+        let collectable = try JSONDecoder().decode(CollectableDto.self, from: data)
+        
+        myCollectables.append(Collectable.convertFromDtos(collectableDtos: [collectable])[0])
     }
     
     func authenticate() async throws {

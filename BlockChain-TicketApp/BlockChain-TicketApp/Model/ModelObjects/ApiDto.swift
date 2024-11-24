@@ -82,3 +82,28 @@ public struct TicketDto: Decodable {
         priceCategory = try container.decode(Int.self, forKey: .priceCategory)
     }
 }
+
+public struct CollectableDto: Decodable {
+    public var id: String
+    public var name: String
+    public var imageUrl: String
+    public var collectionId: String
+    public var nftAddress: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case imageUrl
+        case collectionId
+        case nftAddress
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        imageUrl = try container.decode(String.self, forKey: .imageUrl)
+        collectionId = try container.decode(String.self, forKey: .collectionId)
+        nftAddress = try container.decode(String.self, forKey: .nftAddress)
+    }
+}
