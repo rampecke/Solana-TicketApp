@@ -14,6 +14,9 @@ class Model {
     
     var profile: Profile = Profile(name: "", profilePictureUrl: "")
     
+    var collectables: [Collectable] = []
+    var myCollectables: [Collectable] = []
+    
     func returnListSorted(sortOption: SortOptions) -> [OrganizationEvent] {
         return allEvents //TODO: actually sort by the type
     }
@@ -23,6 +26,10 @@ class Model {
         let closestTicket = futureTickets.min(by: { $0.organizationEvent.startTime < $1.organizationEvent.startTime })
         
         return closestTicket
+    }
+    
+    func collectableOwnByMe(collectable: Collectable) -> Bool {
+        return true //TODO: Calculate if it is owned by me
     }
 }
 

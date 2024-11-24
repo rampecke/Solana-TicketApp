@@ -7,7 +7,9 @@
 
 import Foundation
 
+@Observable
 class Collection {
+    var uuid: UUID = UUID()
     var titel: String
     var event: OrganizationEvent
     var possibleCollectables: [Collectable]
