@@ -14,11 +14,28 @@ class Model {
     
     var profile: Profile = Profile(name: "", profilePictureUrl: "")
     
-    var collectables: [Collectable] = []
+    var collections: [CollectionNFT] = []
     var myCollectables: [Collectable] = []
     
     func returnListSorted(sortOption: SortOptions) -> [OrganizationEvent] {
-        return allEvents //TODO: actually sort by the type
+        switch sortOption {
+        case .Popular:
+            return allEvents.sorted { $0.popularityScore > $1.popularityScore }
+        case .CloseBy:
+            return allEvents
+        case .Music:
+            return allEvents.filter {$0.eventCategory == EventCategoryType.Music}
+        case .Sports:
+            return allEvents.filter {$0.eventCategory == EventCategoryType.Sports}
+        case .ArtsTheatre:
+            return allEvents.filter {$0.eventCategory == EventCategoryType.ArtsTheatre}
+        case .Conference:
+            return allEvents.filter {$0.eventCategory == EventCategoryType.Conference}
+        case .Fair:
+            return allEvents.filter {$0.eventCategory == EventCategoryType.Fair}
+        case .Other:
+            return allEvents.filter {$0.eventCategory == EventCategoryType.Other}
+        }
     }
     
     func returnClosestTicket() -> Ticket? {
