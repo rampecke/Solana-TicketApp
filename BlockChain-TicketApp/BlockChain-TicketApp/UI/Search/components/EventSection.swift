@@ -52,7 +52,7 @@ struct EventSection: View {
                 }
             }
         }.padding()
-            .background(Color.gray.opacity(0.1))
+            .background(Color.gray.opacity(0.2))
             .cornerRadius(15)
             .padding(.horizontal)
     }

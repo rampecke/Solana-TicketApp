@@ -31,11 +31,15 @@ struct CollectionSection: View {
                 GridItem(.fixed(170)),
             ], spacing: 10) {
                 ForEach(sortedCollectables()) { collectable in
-                    CollectableCardSmall(collectable: collectable)
+                    NavigationLink {
+                        CollectableOverview(collectable: collectable)
+                    } label: {
+                        CollectableCardSmall(collectable: collectable)
+                    }
                 }
             }
         }.padding()
-        .background(Color.gray.opacity(0.1))
+        .background(Color.gray.opacity(0.2))
         .cornerRadius(15)
         .padding(.horizontal)
     }

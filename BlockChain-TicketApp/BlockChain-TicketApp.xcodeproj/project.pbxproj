@@ -10,6 +10,7 @@
 		A089057A2CF2B8D000107F8A /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08905792CF2B8D000107F8A /* PayView.swift */; };
 		A089057C2CF2C52600107F8A /* CollectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A089057B2CF2C52600107F8A /* CollectableView.swift */; };
 		A089057F2CF2CB4C00107F8A /* CollectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A089057E2CF2CB4C00107F8A /* CollectionSection.swift */; };
+		A08905812CF2DC8F00107F8A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08905802CF2DC8F00107F8A /* ProfileView.swift */; };
 		A0B14D2C2CF2A1CF0003843B /* CollectableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B14D2B2CF2A1CF0003843B /* CollectableCard.swift */; };
 		A0E8715F2CF173F20084AD88 /* BlockChain_TicketAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E8715E2CF173F20084AD88 /* BlockChain_TicketAppApp.swift */; };
 		A0E871612CF173F20084AD88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E871602CF173F20084AD88 /* ContentView.swift */; };
@@ -46,6 +47,7 @@
 		A08905792CF2B8D000107F8A /* PayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
 		A089057B2CF2C52600107F8A /* CollectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableView.swift; sourceTree = "<group>"; };
 		A089057E2CF2CB4C00107F8A /* CollectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSection.swift; sourceTree = "<group>"; };
+		A08905802CF2DC8F00107F8A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A0B14D2B2CF2A1CF0003843B /* CollectableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableCard.swift; sourceTree = "<group>"; };
 		A0E8715B2CF173F20084AD88 /* BlockChain-TicketApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlockChain-TicketApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E8715E2CF173F20084AD88 /* BlockChain_TicketAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockChain_TicketAppApp.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				A0E8718C2CF21DDB0084AD88 /* EventSection.swift */,
 				A0E8718E2CF22D600084AD88 /* EventCard.swift */,
+				A08905802CF2DC8F00107F8A /* ProfileView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				A0B14D2C2CF2A1CF0003843B /* CollectableCard.swift in Sources */,
 				A089057F2CF2CB4C00107F8A /* CollectionSection.swift in Sources */,
 				A0E871882CF211BF0084AD88 /* HomeView.swift in Sources */,
+				A08905812CF2DC8F00107F8A /* ProfileView.swift in Sources */,
 				A0E871912CF242BD0084AD88 /* TicketList.swift in Sources */,
 				A089057A2CF2B8D000107F8A /* PayView.swift in Sources */,
 				A0E8718D2CF21DDB0084AD88 /* EventSection.swift in Sources */,

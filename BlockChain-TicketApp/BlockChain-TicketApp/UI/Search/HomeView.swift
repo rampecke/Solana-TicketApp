@@ -40,7 +40,7 @@ struct HomeView: View {
                                 .font(.headline)
                             Spacer()
                         }.frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
+                            .padding(.horizontal)
                         TicketCountdownElement(ticket: model.returnClosestTicket() ?? MockModel().getExampleTicket()).padding(.bottom, 10).padding(.horizontal)
                         
                     }
@@ -50,8 +50,8 @@ struct HomeView: View {
                         EventSection(sectionName: category.rawValue, sortOption: selectSortOption(eventType: category))
                     }
                 }
-            }
-        }.searchable(text: $searchText)
+            }.searchable(text: $searchText)
+        }
     }
 }
 

@@ -52,6 +52,7 @@ struct CollectableCard: View {
                             .clipShape(Capsule())
                     }
                 }
+                
                 Text("\(collectable.numberInCollection ?? 0)/\(collectable.totalNumberInCollection ?? 0)")
                     .font(.subheadline)
                     .fontWeight(.semibold)
