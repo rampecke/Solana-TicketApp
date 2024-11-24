@@ -20,7 +20,7 @@ app.get("/events", async (_, res) => {
       _count: {
         select: {
           tickets: {
-            where: { buyerWalletAddress: { not: null } },
+            where: { buyerWalletAddress: null },
           },
         },
       },
@@ -140,5 +140,5 @@ app.post("/tickets/:id/claim", async (req, res) => {
 });
 
 ViteExpress.listen(app, 3000, () =>
-  console.log("Server is listening on port 3000..."),
+  console.log("Server is listening on port 3000...")
 );

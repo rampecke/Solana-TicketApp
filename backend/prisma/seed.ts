@@ -1,25 +1,126 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma, $Enums } from "@prisma/client";
+import { lstat, readdir, readFile } from "fs/promises";
+import { resolve } from "path";
+import { randomUUID } from "crypto";
 
 export const prisma = new PrismaClient();
 
 async function main() {
+  const traverseFolder = async (
+    folderPath: string
+  ): Promise<
+    [
+      Prisma.EventCreateManyInput[],
+      Prisma.TicketCreateManyInput[],
+      Prisma.CollectionCreateManyInput[]
+    ]
+  > => {
+    const events: Prisma.EventCreateManyInput[] = [];
+    const tickets: Prisma.TicketCreateManyInput[] = [];
+    const collections: Prisma.CollectionCreateManyInput[] = [];
+
+    const subdirs = await readdir(folderPath);
+
+    for (const subdir of subdirs) {
+      const res = resolve(folderPath, subdir);
+      const stat = await lstat(res);
+
+      if (stat.isDirectory()) {
+        const [e, t, c] = await traverseFolder(res);
+        events.push(...e);
+        tickets.push(...t);
+        collections.push(...c);
+      } else {
+        if (res.includes(".json")) {
+          // Read JSON file
+          const data = await readFile(res, "utf8");
+
+          const json = JSON.parse(data);
+
+          let category: $Enums.EventCategory;
+          switch (json.eventCategory) {
+            case "Music":
+              category = "Music";
+              break;
+            case "Sports":
+              category = "Sports";
+              break;
+            case "Theater":
+              category = "ArtsTheatre";
+              break;
+            case "Conference":
+              category = "Conference";
+              break;
+            default:
+              category = "Other";
+              break;
+          }
+
+          const event: Prisma.EventCreateManyInput = {
+            id: randomUUID(),
+            startTime: new Date(json.startTime),
+            endTime: new Date(json.endTime),
+            locationLatitude: json.location.latitude,
+            locationLongitude: json.location.longitude,
+            nameLocation: json.nameLocation,
+            eventName: json.eventName,
+            eventDescription: json.eventDescription,
+            eventCategory: category,
+            organizerName: json.organizerName,
+            imageUrl: json.imageUrl,
+          };
+
+          const numberOfTickets = Math.floor(Math.random() * 11) + 10; // Random number between 10 and 20
+
+          for (let i = 0; i < numberOfTickets; i++) {
+            const randomTicket: Prisma.TicketCreateManyInput = {
+              eventId: event.id!,
+              // Category between 1 and 4 randomly
+              priceCategory: Math.floor(Math.random() * 4) + 1,
+              seatingBlock: (Math.floor(Math.random() * 10) + 1).toString(),
+              seatingRow: (Math.floor(Math.random() * 10) + 1).toString(),
+              seatingSeat: (Math.floor(Math.random() * 100) + 1).toString(),
+            };
+
+            tickets.push(randomTicket);
+          }
+
+          const collection: Prisma.CollectionCreateManyInput = {
+            id: randomUUID(),
+            eventId: event.id!,
+            name: "Hi",
+          };
+
+          collections.push(collection);
+
+          // Now you can use the `tickets` array to create multiple tickets in your database
+
+          events.push(event);
+        }
+      }
+    }
+
+    return [events, tickets, collections];
+  };
+  const [events, tickets, collections] = await traverseFolder(
+    "/Users/simon/Downloads/Hackathon/Events"
+  );
+
+  console.log(events);
+
   // Create events
   await prisma.event.createMany({
-    data: [
-      {
-        startTime: new Date("2024-06-06T16:00:00Z"),
-        endTime: new Date("2024-06-06T18:00:00Z"),
-        locationLatitude: 51.5552,
-        locationLongitude: -0.10839,
-        nameLocation: "Emirates Stadium London",
-        eventName: "Robbie Williams - Live 2025",
-        eventDescription:
-          "In the 1990s, he was one of Britain's premier pop bad boys, riding his time in the mega-selling Take That into a hit-studded solo career. Today, Robbie Williams is one of the world's most celebrated pop artists, having notched six albums in the Top 100 best-selling U.K. albums of all time, achieved a Guinness World Record for most concert tickets sold in a single day, and released a slew of singles — from the sweeping 1997 ballad 'Angels' to the cheeky 2012 banger 'Candy' — that hit No. 1 on charts around the world.",
-        organizerName: "Robbie Williams",
-        eventCategory: "Music",
-        imageUrl: "",
-      },
-    ],
+    data: events,
+  });
+
+  // Create tickets
+  await prisma.ticket.createMany({
+    data: tickets,
+  });
+
+  // Create collections
+  await prisma.collection.createMany({
+    data: collections,
   });
 }
 

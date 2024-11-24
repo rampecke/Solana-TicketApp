@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["omitApi"]
 }
 
@@ -15,52 +15,51 @@ datasource db {
 }
 
 model Event {
-  id      String   @id @default(uuid())
-  eventName String
-  eventDescription String?
-  startTime DateTime
-  endTime DateTime
-  imageUrl String
-  organizerName String
-  nameLocation String?
-  locationLatitude Float?
+  id                String        @id @default(uuid())
+  eventName         String
+  eventDescription  String?
+  startTime         DateTime
+  endTime           DateTime
+  imageUrl          String
+  organizerName     String
+  nameLocation      String?
+  locationLatitude  Float?
   locationLongitude Float?
-  eventCategory EventCategory
-  collection Collection?
+  eventCategory     EventCategory
+  collection        Collection?
 
   tickets Ticket[]
 }
 
 model Ticket {
-  id      String @id @default(uuid())
-  eventId String
-  priceCategoryId String
-  buyerWalletAddress String?
+  id                   String  @id @default(uuid())
+  eventId              String
+  buyerWalletAddress   String?
   claimedWalletAddress String?
-  seatingBlock String
-  seatingRow String
-  seatinSeat String
-  priceCategory Int
+  seatingBlock         String
+  seatingRow           String
+  seatingSeat          String
+  priceCategory        Int
 
   event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
 }
 
 model Collectable {
-  id String @id @default(uuid())
-  name String
-  imageUrl String
+  id           String     @id @default(uuid())
+  name         String
+  imageUrl     String
   collectionId String
-  nftAddress String @unique
-  claimed Boolean @default(false)
-  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  nftAddress   String     @unique
+  claimed      Boolean    @default(false)
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
 }
 
 model Collection {
-  id String @id @default(uuid())
-  name String
-  eventId String @unique
+  id           String        @id @default(uuid())
+  name         String
+  eventId      String        @unique
   collectables Collectable[]
-  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  event        Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
 }
 
 enum EventCategory {
