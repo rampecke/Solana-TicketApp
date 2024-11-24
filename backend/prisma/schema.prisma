@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["omitApi"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Event {
+  id      String   @id @default(uuid())
+  eventName String
+  startTime DateTime
+  endTime DateTime
+  imageUrl String
+  organizerName String
+  nameLocation String?
+  locationLatitude Float?
+  locationLongitude Float?
+  eventCategory EventCategory
+  collection Collection?
+
+  tickets Ticket[]
+  priceCategories PriceCategory[]
+}
+
+model Ticket {
+  id      String @id @default(uuid())
+  eventId String
+  priceCategoryId String
+  buyerWalletAddress String?
+  claimedWalletAddress String?
+  seatingBlock String
+  seatingRow String
+  seatinSeat String
+
+  event Event @relation(fields: [eventId], references: [id])
+  priceCategory PriceCategory @relation(fields: [priceCategoryId], references: [id])
+}
+
+model PriceCategory {
+  id      String @id @default(uuid())
+  name    String
+  price Int
+  eventId String
+  event Event @relation(fields: [eventId], references: [id])
+  tickets Ticket[]
+}
+
+model Collectable {
+  id String @id @default(uuid())
+  name String
+  imageUrl String
+  collectionId String
+  nftAddress String @unique
+  claimed Boolean @default(false)
+  collection Collection @relation(fields: [collectionId], references: [id])
+}
+
+model Collection {
+  id String @id @default(uuid())
+  name String
+  eventId String @unique
+  collectables Collectable[]
+  event Event @relation(fields: [eventId], references: [id])
+}
+
+enum EventCategory {
+  Music
+  Sports
+  ArtsTheatre
+  Conference
+  Fair
+  Other
+}
