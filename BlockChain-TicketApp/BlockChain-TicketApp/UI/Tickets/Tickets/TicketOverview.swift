@@ -25,7 +25,7 @@ struct TicketOverview: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 10) {
+            VStack(spacing: 16) {
                 ZStack(alignment: .bottom) {
                     
                     AsyncImage(url: URL(string: ticket.organizationEvent.imageUrl)) { image in
@@ -40,7 +40,7 @@ struct TicketOverview: View {
                         .cornerRadius(15)
                     
                     TicketHeader(organizationEvent: ticket.organizationEvent)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 20)
                         .padding(.horizontal, 20)
                 }.padding(.horizontal)
                 

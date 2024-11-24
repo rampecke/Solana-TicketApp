@@ -15,7 +15,7 @@ struct CollectableOverview: View {
             // Card Display
             CollectableCard(collectable: collectable)
             
-            Text("\(collectable.price, specifier: "%.2f") ETH")
+            Text("\(collectable.price, specifier: "%.2f") SOL")
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.primary)

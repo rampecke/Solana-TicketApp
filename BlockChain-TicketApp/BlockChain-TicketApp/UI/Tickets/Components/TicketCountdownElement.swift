@@ -59,7 +59,7 @@ struct TicketCountdownElement: View {
             
             // TicketCountdown component will show the countdown or "Event Ended"
             TicketCountdown(ticket: ticket, remaningTime: $remainingTime)
-                .padding(.bottom, 10)
+                .padding(.bottom, 20)
                 .padding(.horizontal, 20)
         }
         .onAppear {
