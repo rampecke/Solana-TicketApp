@@ -6,8 +6,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`eventure-sol.duckdns.org`)" # Replace with your domain
+      - "traefik.http.routers.app.entrypoints=websecure"
+      - "traefik.http.routers.app.tls.certresolver=lets-encrypt"
     environment:
       DATABASE_URL: "postgresql://postgres:hackatum@db:5432/eventure"
     depends_on:
@@ -29,5 +32,26 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  traefik:
+    image: traefik:v3.2
+    container_name: traefik
+    ports:
+      - "80:80"
+      - "443:443"    # HTTPS
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.lets-encrypt.acme.tlschallenge=true"
+      - "--certificatesresolvers.lets-encrypt.acme.email=devstar0711@gcplab.me" # Replace with your email
+      - "--certificatesresolvers.lets-encrypt.acme.storage=/letsencrypt/acme.json"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./letsencrypt:/letsencrypt
+
 volumes:
   postgres_data:
+  letsencrypt:
