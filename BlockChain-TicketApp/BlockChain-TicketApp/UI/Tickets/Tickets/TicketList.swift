@@ -28,7 +28,7 @@ struct TicketList: View {
                 ContentUnavailableView {
                     Label("No Tickets", systemImage: "ticket")
                 } description: {
-                    Text("Go to the Searchpag and get your tickets.")
+                    Text("Go to the Search page and get your tickets.")
                 }
             }
         }
