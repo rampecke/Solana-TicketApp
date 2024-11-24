@@ -22,13 +22,13 @@ struct TicketList: View {
                         }
                     }
                 }
-            }.overlay {
-                if model.myTickets.isEmpty {
-                    ContentUnavailableView {
-                        Label("No Tickets", systemImage: "ticket")
-                    } description: {
-                        Text("Go to the Searchpag and get your tickets.")
-                    }
+            }
+        }.overlay {
+            if model.myTickets.isEmpty {
+                ContentUnavailableView {
+                    Label("No Tickets", systemImage: "ticket")
+                } description: {
+                    Text("Go to the Searchpag and get your tickets.")
                 }
             }
         }
