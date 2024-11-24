@@ -15,15 +15,19 @@ struct CollectableOverview: View {
             // Card Display
             CollectableCard(collectable: collectable)
             
-            Text("\(collectable.price, specifier: "%.2f") SOL")
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .foregroundColor(.primary)
-                .padding(3)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8) // Use RoundedRectangle for rounded corners
-                        .stroke(Color.gray, lineWidth: 1) // Define the border color and thickness
-                )
+            HStack {
+                Text("\(collectable.price, specifier: "%.2f") SOL")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+                    .padding(3)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8) // Use RoundedRectangle for rounded corners
+                            .stroke(Color.gray, lineWidth: 1) // Define the border color and thickness
+                    )
+                Spacer()
+                Link("Explorer", destination: URL(string: "https://explorer.solana.com/address/\(collectable.nftAddress)?cluster=devnet")!).padding(3)
+            }
             
             // Conditional Button for Sell or Buy
             Button(action: {

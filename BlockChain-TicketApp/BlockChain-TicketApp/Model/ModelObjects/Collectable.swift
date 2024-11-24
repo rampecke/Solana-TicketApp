@@ -17,8 +17,9 @@ class Collectable: Identifiable {
     var numberInCollection: Int?
     var totalNumberInCollection: Int?
     var ownedByMe: Bool
+    var nftAddress: String
     
-    init(uuid: UUID, title: String, collection: CollectionNFT?, imageUrl: String, price: Double, numberInCollection: Int?, totalNumberInCollection: Int?, ownedByMe: Bool) {
+    init(uuid: UUID, title: String, collection: CollectionNFT?, imageUrl: String, price: Double, numberInCollection: Int?, totalNumberInCollection: Int?, ownedByMe: Bool, nftAddress: String) {
         self.uuid = uuid
         self.title = title
         self.collection = collection
@@ -27,6 +28,7 @@ class Collectable: Identifiable {
         self.numberInCollection = numberInCollection
         self.totalNumberInCollection = totalNumberInCollection
         self.ownedByMe = ownedByMe
+        self.nftAddress = nftAddress
     }
 }
 
@@ -45,7 +47,8 @@ extension Collectable {
                 price: Double.random(in: 0.5...4),
                 numberInCollection: numberInCollection,
                 totalNumberInCollection: maxNumber,
-                ownedByMe: dto.claimedByAddress == myAddress
+                ownedByMe: dto.claimedByAddress == myAddress,
+                nftAddress: dto.nftAddress
             )
         }
     }

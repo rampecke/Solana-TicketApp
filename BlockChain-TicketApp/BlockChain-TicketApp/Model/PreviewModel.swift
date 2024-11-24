@@ -214,7 +214,7 @@ class PreviewModel: Model {
             fatalError("Failed to create start date")
         }
         
-        return Collectable(uuid: UUID(), title: "Macklemore D-Tour", collection: CollectionNFT(uuid: UUID(), title: "More - Macklemore", eventId: UUID(), possibleCollectables: []), imageUrl: "", price: 3.115, numberInCollection: 155, totalNumberInCollection: 2057, ownedByMe: true)
+        return Collectable(uuid: UUID(), title: "Macklemore D-Tour", collection: CollectionNFT(uuid: UUID(), title: "More - Macklemore", eventId: UUID(), possibleCollectables: []), imageUrl: "", price: 3.115, numberInCollection: 155, totalNumberInCollection: 2057, ownedByMe: true, nftAddress: "123")
     }
     
     func getExampleCollectable2() -> Collectable {
@@ -229,6 +229,6 @@ class PreviewModel: Model {
             fatalError("Failed to create start date")
         }
         
-        return Collectable(uuid: UUID(), title: "Macklemore D-Tour", collection: CollectionNFT(uuid: UUID(), title: "More - Macklemore", eventId: UUID(), possibleCollectables: []), imageUrl: "", price: 3.115, numberInCollection: 155, totalNumberInCollection: 2057, ownedByMe: false)
+        return Collectable(uuid: UUID(), title: "Macklemore D-Tour", collection: CollectionNFT(uuid: UUID(), title: "More - Macklemore", eventId: UUID(), possibleCollectables: []), imageUrl: "", price: 3.115, numberInCollection: 155, totalNumberInCollection: 2057, ownedByMe: false, nftAddress: "123")
     }
 }
